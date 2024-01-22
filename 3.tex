@@ -2,7 +2,15 @@
 
 	% 如果有这一部分另外的package，在这里加上
 	% 没有的话不需要
-	
+	\newcommand{\id}{\mathrm{id}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\RP}{\mathbb{RP}}
 	\begin{document}
 \else
 \fi
@@ -211,7 +219,7 @@
       B^*:=\Hom_{\mathrm{Ab}}(B,\Q/\Z); (fr)(b)=f(rb)
    \end{align}
 \end{definition}
-\begin{proposition}
+\begin{proposition}{}
    下面的命题等价。
 
    (1)$B$平坦。
@@ -222,6 +230,139 @@
 
    (4)$\mathrm{Tor}_I^R(R/I,B)=0$对于任何右理想$I$都成立。
 \end{proposition}
+\begin{proof}
+   (3)和(4)的等价性来源于正合列:
+   \begin{align}
+      0 \to \mathrm{Tor}_1(R/I,B) \to I\otimes B \to B \to B/IB \to 0
+   \end{align}
+   现在考虑$A'$是$A$的子模。考虑:
+   \begin{align}
+      \Hom(A,B^*) \to \Hom(A',B^*)
+   \end{align}
+   $B^*$等价于说上述映射是满射。根据伴随关系,我们有:
+   \begin{align}
+      \Hom(A\otimes B,\Q/\Z) \to \Hom(A'\otimes B,\Q/Z)
+   \end{align}是满射。即$(A\otimes B)^* \to (A'\otimes B)^*$是满射。
+
+   用下面的\textbf{引理}，可以知道此时$A' \otimes B \to A\otimes B$是单射,所以$B$是平坦模。同理也可以反推回去。所以(1)(2)等价。另外带入$A'=I,A=R$，可以推出$I\otimes B \to R\otimes B$是单射。于是$I\otimes B\cong IB$且根据Baer判别法，这是可逆的。所以(1)(3)等价。
+\end{proof}
+我们描述一个引理。
+\begin{lemma}{}
+   $f:A' \to A$是单射等价于$f^*:A^* \to A'^*$是满射。
+\end{lemma}
+\begin{proof}
+   因为$\Q/\Z$是内射的$\Z$模,所以保正合。
+\end{proof}
+\begin{proposition}[Pontrjagin对偶与正合]{}
+   $A \to B \to C$是正合的当且仅当对偶$C^* \to B^* \to A^*$是正合的。
+\end{proposition}
+\begin{proof}
+   因为$\Q/\Z$是内射模，所以$\Hom(-,\Q/\Z)$是正合函子，因此$C^* \to B^* \to A^*$是正合的。
+
+   如果$C^* \to B^* \to A^*$正合,则$A \to B \to C$首先复形。若$b \in B$且在$C$中的像为$0$,我们证明$b$在$A$的像中。若不然,则$b+\mathrm{im}A$是$B/\mathrm{im}A$中的非$0$元。我们定义$g:B/\mathrm{im}A \to \Q/\Z$使得$g(b+\mathrm{im}A)\neq 0$。则$g$也给出了$B^*$中的非$0$元且在$A^*$中的像为$0$。
+
+   所以可以给出一个$f \in C^*$。剩下的就是显然了。
+\end{proof}
+这个证明写的比较模糊。
+
+我们邀请读者回忆有限展示的概念。然后不加证明的给出有限展示与生成元的选取无关.
+
+\begin{proposition}{}
+   若$\varphi:F \to M$是满射且$F$是有限生成的,$M$是有限展示的,则$\ker \varphi$是有限生成的。
+\end{proposition}
+HINT:用蛇形引理。
+
+仍然用$A^*$表示$A$的Pontrjagin对偶,则存在一个自然的映射$\sigma:A^* \otimes_R M \to \Hom_R(M,A)^*$
+\begin{align}
+   \sigma(f\otimes m)=h \mapsto f(h(m))
+\end{align}
+其中$f\in A^*,m \in M,h \in \Hom(M,A)$.我们的问题是，什么时候$\sigma$是一个同构？
+\begin{theorem}{}
+   对于任何有限展示的$M$,$\sigma$都是一个同构。
+\end{theorem}
+\begin{proof}
+   若$M=R$，则自然有$\sigma$是同构。根据可加性，$M=\R^n$的时候也是如此。所以有:
+   % https://q.uiver.app/#q=WzAsOCxbMCwwLCJBXipcXG90aW1lcyBSXm0iXSxbMCwxLCJcXEhvbShSXm0sQSleKiJdLFsxLDAsIkFeKlxcb3RpbWVzIFJebiJdLFsyLDAsIkFeKlxcb3RpbWVzIE0iXSxbMywwLCIwIl0sWzMsMSwiMCJdLFsyLDEsIlxcSG9tKE0sQSleKiJdLFsxLDEsIlxcSG9tKFJebixBKV4qIl0sWzAsMV0sWzAsMl0sWzIsM10sWzMsNF0sWzYsNV0sWzcsNl0sWzEsN10sWzIsN10sWzMsNl1d
+\[\begin{tikzcd}
+	{A^*\otimes R^m} & {A^*\otimes R^n} & {A^*\otimes M} & 0 \\
+	{\Hom(R^m,A)^*} & {\Hom(R^n,A)^*} & {\Hom(M,A)^*} & 0
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+\end{tikzcd}\]
+    因为$\otimes$是右正合的，$\Hom$是左正合的,所以图中两个行正合.根据5引理\ref{5lemma}可知$\sigma$是同构。
+\end{proof}
+\begin{theorem}{}
+   每个有限展示的平坦模是投射模。
+\end{theorem}
+\begin{proof}
+   我们证明$\Hom(M,-)$是正合的。设$B\to C$是满射,则$C^* \to B^*$是单射。若$M$是平坦的,则:
+   % https://q.uiver.app/#q=WzAsNCxbMCwwLCJDXipcXG90aW1lc19SIE0iXSxbMSwwLCJCXipcXG90aW1lcyBNIl0sWzAsMSwiXFxIb20oTSxDKV4qIl0sWzEsMSwiXFxIb20oTSxCKV4qIl0sWzAsMV0sWzAsMiwiXFxzaWdtYSJdLFsxLDMsIlxcc2lnbWEiLDJdLFsyLDNdXQ==
+\[\begin{tikzcd}
+	{C^*\otimes_R M} & {B^*\otimes M} \\
+	{\Hom(M,C)^*} & {\Hom(M,B)^*}
+	\arrow[from=1-1, to=1-2]
+	\arrow["\sigma", from=1-1, to=2-1]
+	\arrow["\sigma"', from=1-2, to=2-2]
+	\arrow[from=2-1, to=2-2]
+\end{tikzcd}\]
+   给出了$\Hom(M,B)\to Hom(M,C)$的满射。所以$M$是投射模。
+  \end{proof}  
+   下面的引理来源于dimension shifting.
+   \begin{lemma}[平坦解消引理]{}
+      群$\mathrm{Tor}_*(A,B)$可以用平坦模进行计算。
+   \end{lemma}
+\begin{proposition}[Tor的平坦基变换]
+    设$R \to T$是环同态,使得$T$成为了$R$模。从而对于所有的$R$模$A$,所有的$T$模$C$和所有的$n$:
+    \begin{align}
+      \mathrm{Tor}_n^R(A,C)\cong \mathrm{Tor}_n^T(A \otimes_R T,C)
+    \end{align}
+\end{proposition}
+\begin{proof}
+   选择$R$模的投射解消$P \to A$，则$\mathrm{Tor}_*^R(A,C)$是$P \otimes_R C$的同调。
+
+   因为$T$是平坦的$R$模，所以$P_n\otimes T$是投射的$T$模且$P\otimes T \to A \otimes T$是$T$模的投射解消。所以$\mathrm{Tor}_n^T(A \otimes T,C)$是复形$(P\otimes_R T)\otimes_T C \cong P\otimes_R C$的同调。
+\end{proof}
+\begin{corollary}{}
+   若$R$是交换环,$T$是平坦的$R$代数,则对于所有的$R$模$A,B$和所有的$n$:
+   \begin{align}
+      T\otimes_R \mathrm{Tor}_n^R(A,B)\cong \mathrm{Tor}_n^T(A\otimes_R T,T\otimes_R B)
+   \end{align}
+\end{corollary}
+\begin{proof}
+   设$C=T\otimes_R B$.根据上面的命题,我们只需要证明$\mathrm{Tor}_*^R(A,T\otimes B)=T\otimes \mathrm{Tor}_*^R(A,B)$.因为$T\otimes_R$是正合函子,所以$T\otimes \mathrm{Tor}_*^R(A,B)$是$T\otimes_R (P\otimes _R B)$的同调，从而为$\mathrm{Tor}_*^R(A,T\otimes B)$.
+\end{proof}
+为了使得$\mathrm{Tor}$给出模结构，我们必须假设$R$是交换环。原因是下面的引理:
+
+\begin{lemma}{}
+   设$\mu:A \to A$是左乘一个中心元$r$。则诱导的$\mu_*:\mathrm{Tor}_n^R(A,B)\to \mathrm{Tor}_n^R(A,B)$也是左乘$r$.
+\end{lemma}
+\begin{proof}
+   选择$A$的投射解消$P \to A$。左乘$r$是一个$R$模的链复形映射$\tilde{\mu}:P \to P$.（因为$r$是一个中心元）。从而$\tilde{mu}\otimes B$是$P\otimes B$的$r$左乘。作为商群$\mathrm{Tor}$也是如此。
+\end{proof}
+\begin{corollary}{}
+   若$A$是一个$R/r$模,则对于每个$R$模$B$,$R$模$\mathrm{Tor}_*^R(A,B)$也是$R/r$模。换句话说，$rR$乘在该模得$0$.
+\end{corollary}
+\begin{corollary}[Tor的局部化]{}
+   若$R$是一个交换环且$A,B$都是$R$模。下面的命题对于所有$n$都成立:
+   \begin{enumerate}
+      \item $\mathrm{Tor}_n^R(A,B)=0$
+      \item 对于$R$的任意素理想$p$,$\mathrm{Tor}_n^{R_p}(A_p,B_p)=0$
+      \item 对于$R$的任意极大理想$m$,$\mathrm{Tor}_n^{R_m}(A_m,B_m)=0$.
+   \end{enumerate}
+\end{corollary}
+\begin{proof}
+   对于$R$模而言，$M=0$等价于任意素理想$p$,$M_p=0$等价于任意极大理想$m$,$M_m=0=0$.设$M=\mathrm{Tor}(A,B)$:
+   \begin{align}
+      M_p=R_p \otimes_R M=\mathrm{Tor}_n^{R_p}(A_p,B_p)
+   \end{align}
+\end{proof}
 \section{性质较好的环的Ext函子}
 \section{Ext函子与扩展性质}
 \section{逆向极限的导出函子}
