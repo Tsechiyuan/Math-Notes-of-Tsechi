@@ -364,6 +364,26 @@ HINT:用蛇形引理。
    \end{align}
 \end{proof}
 \section{性质较好的环的Ext函子}
+讨论了Ext后,我们讨论Ext函子的性质。首先我们计算一些性质很好的环的Ext函子。
+
+\begin{lemma}{}
+   $\mathrm{Ext}_\Z^n(A,B)=0$,$\forall n \geq 2$和所有的交换群$A,B$.
+\end{lemma}
+\begin{proof}
+   把$B$嵌入到一个内射的交换群$I^0$.其商群$I^1$是可除的,因而是内射的,所以我们给出了$B$的内射解消$0 \to B \to I^0 \to I^1 \to 0$.
+
+   所以$\mathrm{Ext}^*(A,B)$可以计算为:
+   \begin{align}
+      0 \to \Hom(A,I^0) \to \Hom(A,I^1) \to 0
+   \end{align}
+   的上同调。
+\end{proof}
+因此我们只需要考虑$n=1$的情况。
+\begin{example}{}
+   $\mathrm{Ext}_{\Z}^0(\Z/p,B)={}_p B$.$\mathrm{Ext}_\Z^1(\Z/p,B)=B/pB$.
+
+   可以使用$0 \to \Z \to \Z \to \Z/p$作为$\Z/p$的投射解消计算。
+\end{example}
 \section{Ext函子与扩展性质}
 \section{逆向极限的导出函子}
 \section{泛系数定理}
