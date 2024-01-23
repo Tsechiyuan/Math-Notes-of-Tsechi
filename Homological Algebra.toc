@@ -22,10 +22,10 @@
 \contentsline {section}{\numberline {3.1}Abel群的Tor函子}{39}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Tor函子与平坦性}{42}{section.3.2}%
 \contentsline {section}{\numberline {3.3}性质较好的环的Ext函子}{46}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Ext函子与扩展性质}{46}{section.3.4}%
-\contentsline {section}{\numberline {3.5}逆向极限的导出函子}{46}{section.3.5}%
-\contentsline {section}{\numberline {3.6}泛系数定理}{46}{section.3.6}%
-\contentsline {chapter}{\numberline {4}同调维数}{47}{chapter.4}%
-\contentsline {chapter}{\numberline {5}谱序列}{48}{chapter.5}%
-\contentsline {chapter}{\numberline {6}群同调和上同调}{49}{chapter.6}%
-\contentsline {chapter}{\numberline {7}李代数同调和上同调}{50}{chapter.7}%
+\contentsline {section}{\numberline {3.4}Ext函子与扩张}{48}{section.3.4}%
+\contentsline {section}{\numberline {3.5}逆向极限的导出函子}{49}{section.3.5}%
+\contentsline {section}{\numberline {3.6}泛系数定理}{49}{section.3.6}%
+\contentsline {chapter}{\numberline {4}同调维数}{50}{chapter.4}%
+\contentsline {chapter}{\numberline {5}谱序列}{51}{chapter.5}%
+\contentsline {chapter}{\numberline {6}群同调和上同调}{52}{chapter.6}%
+\contentsline {chapter}{\numberline {7}李代数同调和上同调}{53}{chapter.7}%

@@ -384,7 +384,122 @@ HINT:用蛇形引理。
 
    可以使用$0 \to \Z \to \Z \to \Z/p$作为$\Z/p$的投射解消计算。
 \end{example}
-\section{Ext函子与扩展性质}
+
+因为$\Z$是投射模,所以$\Ext^1(\Z,B)=0$对于任何$B$总是成立。我们可以依据这个结果和上述结果,在$A$是有限生成的Abel群时计算$\Ext(A,B)$:
+\begin{align}
+   A\cong \Z^m \oplus \Z/p  \Rightarrow \Ext(A,B)=\Ext(\Z/p,B)
+\end{align}
+然而无限生成的情况因为余极限不交换，要复杂得多。
+\begin{example}[$B=\Z$]{}
+   设$A$是一个挠群,用$A^*$表示Pontrjagin对偶。$\Z$有经典的内射解消:$0 \to \Z \to \Q \to \Q/\Z \to 0$。用这个解消计算$\Ext^*(A,\Z)$:
+   \begin{align}
+      0 \to \Hom(A,\Q) \to \Hom(A,\Q/\Z) \to 0 
+   \end{align}
+   从而$\Ext_\Z^0(A,\Z)=\Hom(A,\Z)=0$,$\Ext_\Z^1(A,\Z)=A^*$。
+
+   为了对这个例子有更深的印象,注意到$\Z_{p^\infty}$是$\Z/p^n$的余极限(并).于是可以计算:
+   \begin{align}
+      \Ext_\Z^1(\Z_{p^\infty},\Z)=(\Z_{p^\infty})^*
+   \end{align}
+   这个群是$p$-adic整数的无挠群,$\hat{\Z}_p=\Lim (\Z/p^n)$。
+
+   再考虑一个例子:$A=\Z[1/p],B=\Z$.此时:
+   \begin{align}
+      0 \to \Q=\Hom(\Z[1/p],\Q) \to \Hom(\Z[1/p],\Q/\Z) \to 0
+   \end{align}
+   $\Ext^0$比较容易,我们考虑$\Ext^1$.此时给定$f \in \Hom(\Z[1/p],\Q/\Z)$,筛出掉$\Hom(\Z[1/p],\Q)$的元素，本质上留存的是一个$p$-adic数。并且若两个$p$-adic数只差一个整数,与他们给出的$f$是一致的。因此$\Ext^1(\Z[1/p],\Z)=\Z_{p^\infty}$。
+
+   这说明$\Ext$对于平坦模而言也不是vanish的。
+\end{example}
+\begin{example}[$R=\Z/m$,$B=\Z/p$]{}
+   $\Z/p$在这种情况下有无穷的周期内射解消:
+   \begin{align}
+      0 \to \Z/p \xrightarrow{\iota} \Z/m \xrightarrow{p}  \Z/m \xrightarrow{m/p} \Z/m \xrightarrow{p} \dots 
+   \end{align}
+
+   于是$\Ext_{\Z/m}^n(A,\Z/p)$可以计算为:
+   \begin{align}
+      0 \to \Hom(A,\Z/m) \to \Hom(A,\Z/m) \to \Hom(A,\Z/m) \dots
+   \end{align}
+   的上同调。
+
+   比如,若$p^2|m$,则$\Ext_{\Z/m}^n(\Z/p,\Z/p)=\Z/p$
+\end{example}
+\begin{proposition}{}
+   对于所有的$n$和$R$:
+   \begin{enumerate}
+      \item $\Ext_R^n(\bigoplus_\alpha A,B)\cong \prod_{\alpha}\Ext_R^n(A_\alpha,B)$
+      \item $\Ext_R^n(A,\prod_\beta B) \cong \prod_\beta \Ext_R^n(A,B_\beta)$
+   \end{enumerate}
+\end{proposition}
+\begin{proof}
+   设$P_\alpha$是$A_\alpha$的投射解消。于是$\oplus P_\alpha$是$\oplus A_\alpha$的投射解消。同理,$Q_\beta$是$B_\beta$的内射解消,则$\prod Q_\beta$是$\prod B_\beta$的内射解消。
+
+   根据$\Hom$的性质,再加上:
+   \begin{align}
+      H^*(\prod C_\gamma)\cong \prod H^*(C_\gamma)
+   \end{align}
+   可得结果。
+\end{proof}
+\begin{lemma}{}
+   设$R$是交换环,则$\Hom_R(A,B)$和$\Ext^*(A,B)$都是$R$模。若$\mu,\tau$分别是$r$的左乘($A,B$),则诱导的$\mu^*$和$\tau^*$也是左乘。
+\end{lemma}
+可以看到,这是Tor函子的相似版本,可用于给出Ext与局部化交换的性质。
+\begin{proof}
+   给$P \to A$投射解消.左乘$r$给出了$\tilde{mu}:P \to P$作为链复形映射。映射$\Hom(\tilde{mu},B)$是$\Hom(P,B)$上链复形,是左乘$r$.
+
+   因此商群$\Ext^n(A,B)$被$\mu^*$作用也是$r$左乘。
+\end{proof}
+\begin{corollary}{}
+   设$R$是交换环,$A$是$R/r$模。则对于$R$模$B$,$\Ext^*_R(A,B)$是$R/r$模。
+\end{corollary}
+接下来的引理,定理我们不写证明,读者可自查Weibel原书。
+
+考虑$S^{-1}\Hom_R(A,B)$.其到$\Hom_{S^{-1}R}(S^{-1}A,S^{-1}B)$有一个自然的态射$\Phi$。但这个态射一般不是同构。
+\begin{lemma}{}
+   如果$A$是有限展示的$R$模,则对于每个中心可乘集合$S$,$\Phi$是同构。
+\end{lemma}
+不难想象证明用到的是5引理\ref{5lemma}。
+
+\begin{proposition}{}
+   设$A$是交换Noether环上的有限生成模.则$\Phi$也诱导了Ext的同构:
+   \begin{align}
+      \Phi:S^{-1}\Ext_R^n(A,B) \cong \Ext_{S^{-1}R}^n(S^{-1}A,S^{-1}B)
+   \end{align}
+\end{proposition}
+不难想到证明的思路是给$A$的投射解消。因为$S^{-1}$是正合函子,所以保$H^*$。因此用$\Hom$的同构性即可给出上述同构。
+
+\begin{corollary}[Ext的局部化]{Ext-loc}
+   设$R$是交换Noether环且$A$是有限生成$R$模.则下面的命题之间对于任意$B$和$n$都等价:
+   \begin{enumerate}
+      \item $\Ext_R^n(A,B)=0$
+      \item 对于$R$的任何素理想$p$,$\Ext_{R_p}^n(A_p,B_p)=0$
+      \item 对于$R$的任何极大理想$m$,$\Ext_{R_m}^n(A_m,B_m)=0$.
+   \end{enumerate}
+\end{corollary}
+\section{Ext函子与扩张}
+我们在这一节探讨Ext到底计算了什么。为此需要介绍扩张的概念。
+\begin{definition}{extension}
+   一个过$B$的$A$扩张$\xi$是指一个正合列$0 \to B \to X \to A \to 0$.称两个扩张$\xi,\xi'$是等价的,若存在交换图:
+   % https://q.uiver.app/#q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsIkEiXSxbMiwwLCJYIl0sWzMsMCwiQiJdLFs0LDAsIjAiXSxbMSwxLCJBIl0sWzIsMSwiWCciXSxbMywxLCJCIl0sWzQsMSwiMCJdLFswLDEsIjAiXSxbMCwxXSxbMSwyXSxbMiwzXSxbMyw0XSxbNSw2XSxbNiw3XSxbNyw4XSxbOSw1XSxbMSw1LCJcXGlkIiwxXSxbMyw3LCJcXGlkIiwxXSxbMiw2LCJcXGNvbmciXV0=
+\[\begin{tikzcd}
+	0 & A & X & B & 0 \\
+	0 & A & {X'} & B & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+	\arrow[from=2-1, to=2-2]
+	\arrow["\id"{description}, from=1-2, to=2-2]
+	\arrow["\id"{description}, from=1-4, to=2-4]
+	\arrow["\cong", from=1-3, to=2-3]
+\end{tikzcd}\]
+
+   一个扩张是分裂的,若其等价于$0 \to B \to A \oplus B \to 0$（典范的）。
+\end{definition}
 \section{逆向极限的导出函子}
 \section{泛系数定理}
  \ifx\allfiles\undefined
