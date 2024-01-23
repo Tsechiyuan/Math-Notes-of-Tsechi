@@ -480,7 +480,7 @@ HINT:用蛇形引理。
 \section{Ext函子与扩张}
 我们在这一节探讨Ext到底计算了什么。为此需要介绍扩张的概念。
 \begin{definition}{extension}
-   一个过$B$的$A$扩张$\xi$是指一个正合列$0 \to B \to X \to A \to 0$.称两个扩张$\xi,\xi'$是等价的,若存在交换图:
+   一个$A$过$B$的扩张$\xi$是指一个正合列$0 \to B \to X \to A \to 0$.称两个扩张$\xi,\xi'$是等价的,若存在交换图:
    % https://q.uiver.app/#q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsIkEiXSxbMiwwLCJYIl0sWzMsMCwiQiJdLFs0LDAsIjAiXSxbMSwxLCJBIl0sWzIsMSwiWCciXSxbMywxLCJCIl0sWzQsMSwiMCJdLFswLDEsIjAiXSxbMCwxXSxbMSwyXSxbMiwzXSxbMyw0XSxbNSw2XSxbNiw3XSxbNyw4XSxbOSw1XSxbMSw1LCJcXGlkIiwxXSxbMyw3LCJcXGlkIiwxXSxbMiw2LCJcXGNvbmciXV0=
 \[\begin{tikzcd}
 	0 & A & X & B & 0 \\
@@ -500,6 +500,25 @@ HINT:用蛇形引理。
 
    一个扩张是分裂的,若其等价于$0 \to B \to A \oplus B \to 0$（典范的）。
 \end{definition}
+\begin{example}{}
+   若$p$是素数,则仅存在$p$个等价的$\Z/p$过$\Z/p$的扩张。分别是分裂扩张和:
+   \begin{align}
+      0 \to \Z/p \xrightarrow{p} \Z/p^2 \xrightarrow{i}\Z/p \to 0, i=1,2,\dots,p-1
+   \end{align}
+
+   实际上$X$必须是$p^2$阶交换群。若$X$无$p^2$阶元,则根据$X=\Z/p\oplus \Z/p$。若$X$有$p^2$阶元,设该元为$b$。则$pb \in \Z/p=B$。于是有上述$p-1$种投射。
+\end{example}
+\begin{lemma}{}
+   若$\Ext^1(A,B)=0$,则$A$过$B$的扩张总是分裂的。
+\end{lemma}
+\begin{proof}
+   给定一个扩张$\xi$,根据$\Ext^*(A,-)$诱导的长正合列:
+   \begin{align}
+      \Hom(A,X) \to \Hom(A,A) \xrightarrow{\partial}\Ext^1(A,B)=0
+   \end{align}
+   所以$\id_A$有原像$\sigma:A \to X$。这就是一个$X \to A$的截面。所以$X=A \oplus B$分裂。
+\end{proof}
+如果$\Ext^1(A,B)$非$0$,则$\partial(\id_A)$。
 \section{逆向极限的导出函子}
 \section{泛系数定理}
  \ifx\allfiles\undefined
