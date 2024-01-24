@@ -518,7 +518,23 @@ HINT:用蛇形引理。
    \end{align}
    所以$\id_A$有原像$\sigma:A \to X$。这就是一个$X \to A$的截面。所以$X=A \oplus B$分裂。
 \end{proof}
-如果$\Ext^1(A,B)$非$0$,则$\partial(\id_A)$。
+如果$\Ext^1(A,B)$非$0$,为了给出截面,实际上可以计算$\partial(\id_A)=0$。我们把这个构造记作$\Theta(\xi)$.另外.如果两个扩张等价,那么他们的$\Theta(\xi)$相同.因此这个构造只依赖于$\xi$的等价类。
+
+\begin{theorem}{}
+   给定两个模$A,B$,映射$\Theta:\xi \mapsto \partial(\id_A)$给出了一个一一映射:
+   \begin{align}
+      \{\text{A过B的扩张的等价类}\} \to \Ext^1(A,B)
+   \end{align}
+\end{theorem}
+因此这个定理给出了$\Ext^1(A,B)$的一个初步作用:确定$A$过$B$的扩张个数,并赋予一个群结构。
+\begin{proof}
+   对于$A$,固定一个正合列$0 \to M \xrightarrow{j} P \to A \to 0$.其中$P$投射。作用$\Hom(-,B)$,导出一个正合列:
+   \begin{align}
+      \Hom(P,B) \to \Hom(M,B) \xrightarrow{\partial} \Ext^1(A,B) \to 0
+   \end{align}
+
+   现在给定一个$x \in \Ext^1(A,B)$,选定$\beta \in \Hom(M,B)$使得$\partial(\beta)=x$.
+\end{proof}
 \section{逆向极限的导出函子}
 \section{泛系数定理}
  \ifx\allfiles\undefined
