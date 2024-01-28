@@ -748,17 +748,33 @@ HINT:用蛇形引理。
    有一种平凡的情况:若对于每个$k$都存在一个$j\geq k$使得$A_i \to A_k$的像是$0$,我们称该塔满足平凡M-L条件。
 \end{definition}
 \begin{proposition}{}
-   若$A_i$满足M-L条件,则:
-   \begin{align}
-      \Lim^1 A_i=0
-   \end{align}
+   若$A_i$满足M-L条件,则:$\Lim^1 A_i=0$
 \end{proposition}
 \begin{corollary}{}
    设$\{A_i\}$是有限Abel群的塔,或者是有限维向量空间上的塔,我们都有$\Lim^1 A_i=0$
 \end{corollary}
-\begin{corollary}{}
-   
-\end{corollary}
+下面的定理预示了下一节的泛系数定理。
+\begin{theorem}{}
+   设$\dots \to C_1 \to C_0$是Ab的链复形的塔链。（每个$C_i$都是链复形），且满足ML条件。设$C=\Colim C_i$。则对于每个$q$都存在一个正合列:
+   \begin{align}
+      0 \to \textstyle\Lim^1 H_{q+1}(C_i) \to H_q(C) \to \Lim H_q(C_i) \to 0
+   \end{align}
+
+
+若$\dots C_1\to C_0 \to 0$是上链复形的塔链且满足ML条件。则:
+\begin{align}
+   0 \to \textstyle\Lim^1 H^{q-1}(C_i) \to H^q(C) \to \Lim H^q(C_i) \to 0
+\end{align}
+正合。
+\end{theorem}
+在拓扑上，这个定理有一个类似的版本。考虑$X$是CW复形,而$X_i$是$X$的上升子复形链,使得$X=\cup X_i$.则存在一个正合列:
+\begin{align}
+   0 \to \textstyle\Lim^1 H^{q-1}(X_i) \to H^q(X) \to \Lim H^q(X_i) \to 0
+\end{align}
+可以一眼看出这个公式的便利之处:可以根据子群的同调群计算最大的群的同调群。
+\begin{example}{}
+   设$A$是$R$模。
+\end{example}
 \section{泛系数定理}
  \ifx\allfiles\undefined
 	
