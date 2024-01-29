@@ -866,16 +866,43 @@ HINT:用蛇形引理。
    \end{align}
 \end{theorem}
 \begin{proof}
-   因为$d(P_n)$投射,从而有非典范的分裂:$P_n=d(P_n)\oplus Z_n$.于是:
+   因为$d(P_n)$投射,从而有非典范的分裂:$P_n=d(P_{n+1})\oplus Z_n$.从而$Z_n$也投射,并且有:
    \begin{align}
-      0 \to \Hom(dP_n,M) \to \Hom(P_n,M)\to \Hom(Z_n,M) \to 0
+      0 \to \Hom(dP_{n+1},M) \to \Hom(P_n,M)\to \Hom(Z_n,M) \to 0
    \end{align}
    是正合的。所以$0 \to \Hom(dP,M) \to \Hom(P,M)\to \Hom(Z,M) \to 0$是链复形的正合列。导引的长正合列:
    \begin{align}
-      H^{n-1}(\Hom(dP_n,M)) \xrightarrow{\partial} H^n(\Hom(Z,M)) \to H^n(\Hom(P,M)) \to H^n(\Hom(dP_n,M)) \xrightarrow{\partial} H^{n+1}(\Hom(Z,M))
+      H^{n-1}(\Hom(Z,M)) \xrightarrow{\partial} H^n(\Hom(dP,M)) \to H^n(\Hom(P,M)) \to H^n(\Hom(Z,M)) \xrightarrow{\partial} H^{n+1}(\Hom(dP,M))
+   \end{align}
+   注意到$dP$和$Z$的微分算子都是$0$,所以$\Hom(dP,M)$的微分也是$0$,因此$H^n(\Hom(dP,M))=\Hom(dP_n,M)$。同理$H^n(\Hom(Z,M))=\Hom(Z_n,M)$。并且这里的$\partial$右$d(P_{n+1})$到$Z_n$的嵌入给出。
+
+   注意到$H_n(P)$有投射解消:
+   \begin{align}
+      0 \to d(P_{n+1}) \to Z_n \to H^n(P)
+   \end{align}
+   于是$\Ext^1(H_{n-1}(P),M)$和$\Hom(H_n(P),M)=\Ext^0(H_n(P),M)$都可以用:
+   \begin{align}
+      0 \to \Hom(Z_{n-1},M) \to \Hom(dP_n,M) \to 0
+   \end{align}
+   带入上面的长正合列即可得到正合结果。
+
+   而分裂可依照\ref{homo-universal}的结果得出。
+\end{proof}
+\begin{example}{}
+   设$X$是道路连通的,则$H_0(X)=\Z$,且$H^1(X;\Z)\cong \Hom(H_1(X),\Z)$.这是一个无挠的Abel群。($\Z$是投射模。)
+\end{example}
+\begin{theorem}[上双复形的泛系数定理]{}
+   设$P$是一个链复形,$Q$是上链复形.
+   
+   则可以定义上双复形$\Hom(P,Q)$.用$H^*(\Hom(P,Q))$表示$\mathrm{Tot}(\Hom(P,Q))$的上同调。设$P_n$和$dP_n$总是投射的,则存在正合列:
+   \begin{align}
+      0 \to \prod_{p+q=n-1}\Ext^1_R(H_p(P),H^q(Q)) \to H^n(\Hom(P,Q)) \to \prod_{p+q=n}\Hom_R(H_p(P),H^q(Q)) \to 0
    \end{align}
 
-\end{proof}
+\end{theorem}
+最后我们给出右继承的概念以结束本节。一个环$R$称作右继承的,如果任何自由(右)模的子模都是投射(右)模。实际上,任何主理想整环都是继承环(他们都是交换的戴德金整环).
+
+继承环这条良好的性质显然可以帮助我们把泛系数定理推广到任何继承环（直接的，主理想整环）。
  \ifx\allfiles\undefined
 	
 	% 如果有这一部分的参考文献的话，在这里加上
