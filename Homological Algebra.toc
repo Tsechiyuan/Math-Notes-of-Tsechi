@@ -24,8 +24,8 @@
 \contentsline {section}{\numberline {3.3}性质较好的环的Ext函子}{46}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Ext函子与扩张}{48}{section.3.4}%
 \contentsline {section}{\numberline {3.5}逆向极限的导出函子}{51}{section.3.5}%
-\contentsline {section}{\numberline {3.6}泛系数定理}{53}{section.3.6}%
-\contentsline {chapter}{\numberline {4}同调维数}{54}{chapter.4}%
-\contentsline {chapter}{\numberline {5}谱序列}{55}{chapter.5}%
-\contentsline {chapter}{\numberline {6}群同调和上同调}{56}{chapter.6}%
-\contentsline {chapter}{\numberline {7}李代数同调和上同调}{57}{chapter.7}%
+\contentsline {section}{\numberline {3.6}泛系数定理}{54}{section.3.6}%
+\contentsline {chapter}{\numberline {4}同调维数}{57}{chapter.4}%
+\contentsline {chapter}{\numberline {5}谱序列}{58}{chapter.5}%
+\contentsline {chapter}{\numberline {6}群同调和上同调}{59}{chapter.6}%
+\contentsline {chapter}{\numberline {7}李代数同调和上同调}{60}{chapter.7}%

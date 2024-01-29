@@ -773,9 +773,109 @@ HINT:用蛇形引理。
 \end{align}
 可以一眼看出这个公式的便利之处:可以根据子群的同调群计算最大的群的同调群。
 \begin{example}{}
-   设$A$是$R$模。
+   设$A$是$R$模且是子模$\dots \subset A_i \subset A_{i+1}\subset \dots$的并,则对于任何$R$模$B$和$q$,都存在列:
+   \begin{align}
+      0 \to \textstyle\Lim^1 \Ext_R^{q-1}(A_i,B) \to \Ext_R^q(A,B) \to \Lim \Ext_R^q(A_i,B)\to 0
+   \end{align}
+   是正合的。
+
+   对于$\Z_{p^\infty}=\cup \Z/p^i$,上述列化为:
+   \begin{align}
+      0 \to \textstyle\Lim^1 \Hom(\Z/p^i,B) \to \Ext_R^1(\Z_{p^\infty},B) \to \Lim \Ext_R^1(\Z/p^i,B)=\hat{B}_p \to 0
+   \end{align}
+   其中$\hat{B}_p=\Lim(B/p^iB)$是$B$的$p$-adic的完备化。
+   
+   这相当于推广了计算:$\Ext^1_\Z(\Z_{p^\infty},\Z)\cong \hat{\Z}_p$.实际上,设$E$是一个不变的$B$内射解消,考虑上链复形的塔链:
+   \begin{align}
+      \Hom(A_{i+1},E) \to \Hom(A_i,E) \to \dots \Hom(A_0,E) 
+   \end{align}
+   因为每个$\Hom(-,E_n)$都是反变正合的,所以塔链中每一个映射都是满射。(单反过来就是满).而$\Hom(A_i,E)$的上同调是$\Ext^*(A_i,B)$，$\Ext^*(A,B)$是:
+   \begin{align}
+      \Hom(\cup A_i,E)=\Lim \Hom(A_i,E)
+   \end{align}
+   的上同调。
 \end{example}
+\begin{corollary}{}
+   $Z[1/p]=\cup p^{-1}\Z$,从而$\Ext^1_\Z(\Z[1/p],\Z)\cong \hat{\Z}_p/\Z$.从而对于无挠群$B$,有$\Ext_\Z^1(\Q,B)=(\prod_p \hat{B}_p)/B$.
+\end{corollary}
+
 \section{泛系数定理}
+这一节我们思考的问题是,在已知$P$的同调下，如何计算$P\otimes M$的同调。由于在拓扑中，有所谓$\Z$系数,$\R$系数,$R$系数的说法，所以我们实际上在思考不同系数情况下一个拓扑空间同调和上同调群的关系。因而这节的名字是泛系数定理。
+\begin{theorem}[Kunneth公式]{Kunneth-formula}
+   设$P$是由平坦右$R$模给出的链复形,且$d(P_n)$作为$P_{n-1}$的子模总是平坦的。则对于任何$n$和任何左模$M$，都存在正合列:
+   \begin{align}
+      0 \to H_n(P)\otimes_R M \to H_n(P\otimes_R M) \to \mathrm{Tor}_1^R(H_{n-1}(P),M)\to 0
+   \end{align}
+\end{theorem}
+\begin{proof}
+   考虑短正合列:
+   \begin{align}
+      0 \to Z_n \to P_n \to d(P_n)\to 0
+   \end{align}
+   对此使用$\Tor$函子,可以得知$Z_n$也是平坦模。考虑到$\Tor_1(d(P_n),M)=0$,则:
+   \begin{align}
+      0 \to Z_n \otimes M \to P_n\otimes M \to d(P_n)\otimes M \to 0
+   \end{align}
+   是正合的。从而我们给出了链复形的短正合列:
+   \begin{align}
+      0 \to Z\otimes M \to P\otimes M \to d(P)\otimes M \to 0
+   \end{align}
+   注意到$Z$和$d(P)$中的微分算子都是$0$,从而短正合列导引的长正合列为:
+   \begin{align}
+      H_{n+1}(dP\otimes M) \xrightarrow{\partial} H_n(Z\otimes M) \to H_n(P \otimes M) \to H_n(dP \otimes M) \xrightarrow{\partial}H_{n-1}(Z\otimes M)
+   \end{align}
+   其中$H_n(dP_n\otimes M)=dP_n \otimes M$,$H_n(Z_n\otimes M)=Z_n\otimes M$.
+
+   设$i:d(P_{n+1}) \to Z_n$是包含映射。我们断言$\partial$实际上是$i\otimes M$。（实际上很容易给出）。另一方面,$0 \to d(P_{n+1}) \to Z_n \to H_n(P) \to 0$是$H_n(P)$的平坦解消,所以$\Tor_1(H_n(P),M)$可以使用:
+   \begin{align}
+      0 \to d(P_{n+1})\otimes Z_n\otimes M \to 0
+   \end{align}
+   计算。结合长正合列即可得到结果。
+\end{proof}
+\begin{theorem}[同调的泛系数定理]{homo-universal}
+   设$P$是一个自由Abel群的链复形。则对于任意的$n$和每个交换群$M$而言,定理\ref{Kunneth-formula}中的正合列分裂。但是这个分裂并不典范。
+   \begin{align}
+      H_n(P\otimes M)\cong H_n(P)\otimes M \oplus \Tor_1^\Z(H_{n-1}(P),M)
+   \end{align}
+\end{theorem}
+\begin{proof}
+   众所周知,自由Abel群的子群还是自由的。考虑$d(P_n)$是$P_{n-1}$的子群,则$d(P_n)$是自由Abel群。不典范的，这说明:
+   \begin{align}
+      P_n=Z_n \oplus d(P_n)
+   \end{align}
+   从而$Z_n\otimes M$是$P_n\otimes M$的直和项，也是$\ker(d_n\otimes 1)$的直和项。
+
+   商去$d_{n+1}\otimes 1$的像,我们有$H_n(P)\otimes M$是$H_n(P\otimes M)$的直和项。根据Kunneth公式可知另一个项是$\Tor_1^\Z(H_{n-1}(P),M)$.
+\end{proof}
+\begin{theorem}[复形的Kunneth公式]{Kunneth-formula-complex}
+   设$P,Q$是右,左模链复形.如果$P$和$d(P)$都是平坦的,则存在正合列:
+   \begin{align}
+      0 \to \bigoplus_{p+q=n}H_p(P)\otimes H_q(Q) \to H_n(P\otimes Q) \to \bigoplus_{p+q=n-1}\Tor_1^R(H_p(P),H_q(Q)) \to 0
+   \end{align}
+\end{theorem}
+\begin{proof}
+   仿照定理\ref{Kunneth-formula}的证明,把$M$换成$Q$.
+\end{proof}
+为了节省时间，我们省略拓扑上的泛系数定理。
+
+接下来我们攥写上同调版本的泛系数定理。
+\begin{theorem}[上同调的泛系数定理]{cohomo-universal}
+   设$P$是投射模给出的链复形,使得$d(P_n)$也是投射模。则对于每个$n$和$R$模$M$,存在一个非典范的分裂正合列:
+   \begin{align}
+      0 \to \Ext^1_R(H_{n-1}(P),M)\to H^n(\Hom_R(P,M)) \to \Hom_R(H_n(P),M)\to 0
+   \end{align}
+\end{theorem}
+\begin{proof}
+   因为$d(P_n)$投射,从而有非典范的分裂:$P_n=d(P_n)\oplus Z_n$.于是:
+   \begin{align}
+      0 \to \Hom(dP_n,M) \to \Hom(P_n,M)\to \Hom(Z_n,M) \to 0
+   \end{align}
+   是正合的。所以$0 \to \Hom(dP,M) \to \Hom(P,M)\to \Hom(Z,M) \to 0$是链复形的正合列。导引的长正合列:
+   \begin{align}
+      H^{n-1}(\Hom(dP_n,M)) \xrightarrow{\partial} H^n(\Hom(Z,M)) \to H^n(\Hom(P,M)) \to H^n(\Hom(dP_n,M)) \xrightarrow{\partial} H^{n+1}(\Hom(Z,M))
+   \end{align}
+
+\end{proof}
  \ifx\allfiles\undefined
 	
 	% 如果有这一部分的参考文献的话，在这里加上
