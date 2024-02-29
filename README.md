@@ -1,2 +1,6 @@
-# Homological-Algebra-Notes
-Notes for Homological Algebra
+# Math Notes
+看起来笔记很多，但很多都是开坑没写。
+
+
+
+不建议任何人参考，仅供我自己调用和阅读。

@@ -1,0 +1,474 @@
+\documentclass[UTF8]{ctexart}[a4paper,10pt]
+\usepackage[thmmarks]{ntheorem}
+\usepackage{amsmath}
+\usepackage{amsfonts,amssymb} 
+\usepackage{thmtools}
+\usepackage[hmargin=2.5cm,vmargin=2.5cm]{geometry}
+\usepackage{tikz-cd,tikz}
+\usepackage{graphicx,float}
+\usepackage{fancyhdr}
+\usepackage{fourier-orns}
+\usepackage{quiver}
+
+%声明环境
+\newtheorem{example}{例}[section]              
+\newtheorem{algorithm}{算法}[subsection]
+\newtheorem{theorem}{定理}[section]            
+\newtheorem{definition}{定义}[section]
+\newtheorem{axiom}{公理}[section]
+\newtheorem{property}{性质}[section]
+\newtheorem{proposition}{命题}[section]
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+{
+    \theoremheaderfont{\sffamily}
+    \newtheorem*{remark}{注解} 
+}
+\newtheorem{condition}{条件}
+\newtheorem{conclusion}{结论}[section]
+\newtheorem{assumption}{假设}
+{
+\theoremstyle{nonumberplain}
+\theoremheaderfont{\bfseries}
+\theorembodyfont{\normalfont}
+\theoremsymbol{\mbox{$\Box$}}
+\newtheorem{proof}{证明}
+}
+%定义命令
+\def\N{\mathbb{N}}
+\def\Z{\mathbb{Z}}
+\def\Q{\mathbb{Q}}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+\def\S{\mathbb{S}}
+\def\D{\mathbb{D}}
+\def\H{\mathbb{H}}
+%外测度
+\def\outmQ{m_*(Q)}
+
+%页眉设计
+\renewcommand 
+\headrule{
+\hrulefill
+\raisebox{-2.1pt}
+{\quad{\FourierOrns M T S N}\quad}
+\hrulefill}
+\pagestyle{fancy}
+
+%超链接红色
+\usepackage[colorlinks,linkcolor=red]{hyperref}
+
+\usepackage{enumerate}
+
+
+\title{2023春·微分几何课程笔记}
+\author{整理者:Tsechi/Tseyu 授课者：WXF}
+\begin{document}
+\maketitle
+\tableofcontents
+\section{课程简介和考核方式}
+这门课程的主要内容是曲线论和曲面论。是在$\R^3$上研究曲面和曲线的课程。有两个基本定理。
+\section{Euclid空间与刚体运动}
+\subsection{运动}
+将$E$记为$\R^3$空间,设这个空间的距离定义$d$。
+
+对于$x=(x_1,x_2,x_3)$，定义仿射变换$\varphi_{A,B}$：
+$$
+x \mapsto Ax+b
+$$
+我们关心在使得距离不变的仿射变换。为了方便，把$x$看作$(x,1)\in\R^4$.这样更方便。
+\begin{proposition}
+    上述仿射变换$\varphi$保持距离不变等价于$A$是正交矩阵。
+\end{proposition}
+\begin{proof}
+    容易知道在保距离实际上是保内积。$A$是正交矩阵显然等价于保内积。
+\end{proof}
+\begin{definition}
+    满足$A$是正交矩阵的变换$\varphi_{A,B}$被称为欧氏空间中的\textbf{运动}。
+
+    如果$|A|=1$，称$\varphi_{A,B}$是固有运动。若$|A|=-1$，则$\varphi_{A,B}$是非固有运动。$A=I_n$和$A=0$的专有名字不再赘述。
+\end{definition}
+
+\begin{proposition}
+    $E$中所有的运动构成一个群,称为欧氏空间的运动群。
+\end{proposition}
+\begin{proof}
+    显然。
+\end{proof}
+\begin{proposition}
+    欧式空间中保内积的变换（不一定是线性的）一定是$\R^3$的运动。
+\end{proposition}
+\begin{proof}
+    只用证明保内积可以推出线性即可。
+
+    记该变换为$\sigma$，则我们需要考虑$\sigma(kx+ly)=k\sigma(x)+l\sigma(y)$。
+
+    证明一个式子等于0意味着内积为0.由于$\sigma$本身保内积，因此可以在恰当的时机去掉内积表达式中的$\sigma$，从而得到0的结果。不再更多阐述其中的细节。
+\end{proof}
+
+欧几里得几何是研究欧几里得空间在运动群下的不变的性质。
+\subsection{向量}
+在$\{(P,Q)|P,Q \in E\}$中可定义等价关系：
+若存在平移$\tau$:$\tau(P)=P',\tau(Q)=Q'$，则称这两个对等价。
+
+\begin{definition}
+    $(P,Q)$的等价类称为向量。即$V=\overrightarrow{PQ}$.
+\end{definition}
+
+运动$\varphi_{A,B}$自然的诱导向量的线性变换:
+$$
+\forall V , V \mapsto AV
+$$
+
+运动保持欧氏距离和内积，从而我们能立马得到：$|V|$在运动下不变，$(V,W)$在运动下也不变。
+
+我们也有Cauthy-Schwarz不等式：
+$$
+|V||W| \geq V \cdot W
+$$
+
+若$V \cdot W=0$,自然称$V,W$正交。我们下面定义一些高中没学过的东西。
+\begin{definition}[行列式]
+    $(U,V,W)$
+    $$
+    \begin{vmatrix}
+        u_1&u_2&u_3\\
+        v_1&v_2&v_3\\
+        w_1&w_2&w_3
+    \end{vmatrix}
+    $$
+\end{definition}
+\begin{definition}[向量积]
+      $$
+      V \times W=\begin{vmatrix}
+        i&j&k\\
+        v_1&v_2&v_3\\
+        w_1&w_2&w_3
+      \end{vmatrix}
+      $$
+    
+\end{definition}
+有一些性质：
+\begin{enumerate}
+    \item $V \times W=-W \times V$
+    \item $(V_1+V_2)\times W=V_1 \times W+V_2 \times W$
+    \item $(\lambda V)\times W=\lambda(V \times W)$
+    \item $(V \times W) \cdot W=0$
+    \item $(U,V,W)=0$等价于向量线性相关。
+    \item 若$(U,V,W)>0$，称向量组为右手标架。反之为左手架构。
+    \item 向量积在运动下保持不变（×）。
+\end{enumerate}
+
+关于第7点，我们做一些说明。
+\begin{proof}
+    $Av \times Aw$的模长方计算为：
+    $$
+    |Av \times Aw|^2=|Av|^2|Aw|^2 -(Av,Aw)^2=|v|^2|w|^2-(v,w)^2=|v\times w|^2=|A(v\times w)|^2
+    $$ 
+
+    根据$A$的性质容易知道$Aw\times Av$和$A(v \times w)$都和$Aw$，$Av$垂直，因此两个向量是平行的。
+
+    然而$(Aw,Av,A(w\times v))$的值是$|A|(w,v,w\times v)$，$(Aw,Av,Aw\times Av)$的值大于0.两者之间的差异完全由$A$的正负性。因此结论应该为：
+    $$
+    Av \times Aw=|A|A(v\times w)
+    $$
+\end{proof}
+向量积有一些几何含义，列如下：
+\begin{enumerate}
+    \item $V\times W$与$W,V$都垂直。
+    \item $(V,W,V \times W)=(V \times W)\cdot (V \times W)>0$.
+    \item $|V \times W|^2=|V|^2|W|^2-(V\cdot W)^2$
+
+\end{enumerate}
+\section{曲线族}
+\subsection{参数曲线}
+\begin{definition}
+    设$I=(a,b)$是$\R$的一个区间，$I$到$\R^3$的$C^k(k \geq 3)$映射$P$：
+    $$
+    P(t)=\begin{bmatrix}
+        x(t)\\
+        y(t)\\
+        z(t)
+    \end{bmatrix}
+    $$
+    称为是$\R^3$的一条参数曲线，$t$称为$P$的参数。
+
+    考虑$P(t)$的导数，若有：
+    $$
+    P'(t)=\begin{bmatrix}
+        x'(t)\\y'(t)\\z'(t)
+    \end{bmatrix} \neq 0 ,\forall t \in (a,b)
+    $$
+    称$P(t)$是正则参数曲线。(regular parameter curve)
+\end{definition}
+同一条曲线的参数曲线可能既有正则的，也有不正则的。有的曲线本身比较糟糕，不存在正则的参数曲线。但有的曲线只是单纯的参数没有找好。
+\begin{example}
+    $P(t)=(t^2,t^3)$。则$P'(t)=(2t,3t^2)$。
+\end{example}
+切向量的定义不再赘述（md被微分流形的切向量折磨的还不够吗）。那个切向量的定义才是纯纯的折磨。
+
+至于向量场，微分流形里面的向量场把我卷上天又丢下来，让人欲罢不能，想必大家都不会再来看这种非常古典的定义了罢！
+
+我们简单介绍一下比较狭义的微分同胚：
+\begin{definition}
+    $\varphi:I \to I'$被称为是微分同胚，如果$\varphi$存在逆函数且双双可微。
+\end{definition}
+\begin{definition}
+    设$P:I \to \R^3$,$\tilde{P}:\tilde{I} \to \R^3$是两条参数曲线，若存在微分同胚$\varphi:\tilde{I}\to I$使得$\tilde{P}:P \circ \varphi$，则称$\varphi$是$P$到$\tilde{P}$的参数变换。如果$\varphi'>0$，则称$\varphi$保定向。
+\end{definition}
+\begin{definition}[正则曲线]
+    $\R^3$的点集$C$称为正则曲线，若它至少有一个参数表示:
+    $$
+    x=f(t) \quad y=g(t) \quad z=h(t) \quad t \in [a,b]
+    $$
+    满足：
+    \begin{enumerate}
+        \item $f,g,h \in C^k(a,b),k \geq 3$
+        \item $P:(a,b) \to C$,$t \mapsto (f(t),g(t),h(t))$是双方单值一一的。
+        \item $P'(t)\neq 0$。
+    \end{enumerate}
+\end{definition}
+正则曲线都必须要与$(a,b)$同胚，因而大多数我们熟知的曲线其实并不是正则曲线。这是令人不快的。因此下面的定义克服了这种困难：
+\begin{definition}[正则曲线]
+    $\R^3$中的点集$C$称为正则曲线，如果满足：
+    \begin{enumerate}
+        \item 存在$\R^3$中一族正则参数曲线$\{C_i\}$使得$C=\bigcup C_i$
+        \item “相容性”：设$\alpha_i(t_i)$和$\alpha_j(t_j)$是$C_i$和$C_j$对应的正则参数曲线，$C_i \neq C_j \neq \emptyset$,则$\alpha_i(t_i)$和$\alpha_j(t_j)$限制在$C_j$和$C_i$的交上相差一个正则参数变换。
+    \end{enumerate}
+\end{definition}
+其实这就是一维流形的定义。因此实际上我们研究的是1维流形。
+\subsection{弧长参数}
+现在考虑曲线$C$的正则参数表示：$P: I=(a,b) \to \R^3$。设$P_0=P(t_0),P_1=P(t_1)$，$t_0 \leq t_1$。则:
+$$
+l(P_0,P_1)=\int_{t_0}^{t_1}\sqrt{f'(t)^2+g'(t)^2+h'(t)^2}dt
+$$
+
+弧长参数是另外一个重要的结果：
+\begin{definition}
+    设$s$是$C$的一个参数，若对于$\forall P_0,P_1 \in C$，都有$l(P_0,P_1)=|s_1-s_0|$.这里$P_0=P(s_0),P_1=P(t_1)$，则称$s$是曲线$C$的一个弧长参数。
+\end{definition}
+\begin{lemma}
+    $s$是弧长参数当且仅当$s$是正则参数且其对应的切向量都是单位向量。
+\end{lemma}
+\begin{proof}
+    $$
+    f'(s)^2+g'(s)^2+h'(s)^2=1
+    $$
+    则根据弧长公式立马可以得到。
+
+    若$s$是弧长参数，则直接求导就可。
+\end{proof}
+\begin{lemma}[存在性]
+    $C$是正则曲线，则弧长参数存在。
+\end{lemma}
+\begin{proof}
+    显然。
+\end{proof}
+\begin{lemma}[唯一性]
+    弧长参数在相差正负号和平移的条件下唯一的。
+\end{lemma}
+\begin{proof}
+    显然。
+\end{proof}
+\begin{proposition}
+    弧长是正则曲线的不变量。即使相差一个微分同胚，弧长也不变。
+\end{proposition}
+\begin{proof}
+    设$\tilde{P}=P \circ \varphi$.$\varphi$是同胚。$t \in [a,b]$,$r \in [c,d]$。则:
+    $$
+    l(\tilde{P})=\int_c^d |\frac{d\tilde{P}}{dr}|dr=\int_c^d |\frac{dP}{dt}||\frac{dg}{dr}|dr=\int_c^d |\frac{dP}{dt}|\frac{dg}{dr}dr=l(P)
+    $$
+\end{proof}
+\begin{proposition}
+    曲线在运动下弧长参数不变。即若$s$是$P$的弧长参数，则$s$也是$\tilde{P}=AP+B$的弧长参数。
+\end{proposition}
+\begin{proof}
+    计算一下导数：
+    $$
+    |\frac{d\tilde{P}}{ds}|=|\frac{d(AP(s))}{ds}|=|A\frac{dP(s)}{ds}|=|\frac{dP}{ds}|
+    $$
+\end{proof}
+\subsection{曲线的局部方程}
+设$C$是一条正则曲线，$P_0$是$C$上的点。$s$是弧长参数且$P(0)=P_0$。在$s=0$处，我们对$P(s)$进行展开:
+$$
+P(s)=P_0+\frac{dP}{ds}(0)s+\frac{1}{2!}\frac{d^2P}{ds^2}(0)s^2+\frac{1}{3!}\frac{d^3P}{ds^3}(0)s^3+\epsilon(s)\cdot s^3
+$$
+
+其中$\lim_{s \to 0} \epsilon(s) =0$.
+
+考虑$\langle \dfrac{dP}{ds},\dfrac{dP}{ds} \rangle=1$恒成立，对此求导得:
+$$
+\langle \frac{dP}{ds}, \frac{d^2P}{ds^2} \rangle=0
+$$
+因此二阶导得到的向量与切向量垂直（若其不为$0$）。
+
+于是做定义:
+\begin{definition}
+    设$T(0)=\dfrac{dP}{ds}$，$N(0)=\dfrac{d^2P}{ds^2}$.再定义$B(0)=T(0)\times N(0)$。对这三个向量单位化后仍用原记号表示。称$T(0)$是切向量，$N(0)$是主法向量，$B(0)$是次法向量。
+\end{definition}
+根据计算，得到$(T(0),N(0),B(0))=1$，因而三个互相垂直的向量构成了一组右手系坐标基。
+
+\begin{definition}[三类特殊平面]
+    \begin{enumerate}
+        \item 法平面:与$T(0)$垂直的平面，即$N(0),B(0)$张成的平面。
+        \item 次切平面:与$N(0)$垂直的平面。即$T(0),B(0)$张成的平面。
+        \item 密切平面:与$B(0)$垂直的平面。即$T(0),N(0)$张成的平面。
+    \end{enumerate}
+\end{definition}
+如果曲线是平面的，那么不难想象$N(0)$也在该平面上，因而密切平面就是该曲线存在的平面。
+
+注意到$N(0)$的大小反映了切向量变化的速率，因而其反映了曲线的弯曲程度:
+\begin{definition}
+    $\kappa=|\dfrac{d^2P}{ds^2}|$称为曲线$C$在$P_0$处的曲率。$\tau=\dfrac{1}{\kappa}\langle \frac{d^3P}{ds^3}(0),B(0)\rangle $称为曲线$C$在$P_0$的挠率。
+\end{definition}
+若$\kappa$等于$0$，则主法向量无法确定，因而难以定义。
+\begin{example}
+    $P(t)=(t,e^{-1/t^2})$。我们需要验证$\kappa(0)=0$.
+\end{example}
+
+回顾之前的Taylor展开，我们大可以把这些微分换成我们已然定义的概念：
+$$
+P(s)=P_0+(s+o(s^2))T_0+(\frac{1}{2}\kappa s^2+o(s^2))N_0+\frac{1}{6}(\kappa \tau s^3+o(s^3))B_0
+$$
+这样的替换表明了曲线可以由自身的一些参数所表现，而不用依靠外来的参数。这是令人舒适的。要是不能，那么我们该如何想象生活在二维曲线上的一维人呢？
+
+上式称为曲线在$P_0$处的标准型。
+\begin{theorem}[标准型的唯一性]
+    假设有$\overline{T_0}$,$\overline{N_0}$,$\overline{B_0}$以及$\kappa'$,$\tau'$也满足:
+    $$
+P(s)=P_0+(s+o(s^2))\overline{T_0}+(\frac{1}{2}\kappa' s^2+o(s^2))\overline{N_0}+\frac{1}{6}(\kappa' \tau' s^3+o(s^3))\overline{B_0}
+$$
+
+则对应的量都是相同的。
+\end{theorem}
+\begin{proof}
+    直接比较系数即可知道$T_0=\overline{T_0}$和$\kappa N_0=\kappa' \overline{N_0}$。则$\kappa=\kappa'$以及$N_0=\overline{N_0}$。于是$\overline{B_0}=B_0$.进而比较$B_0$系数知$\tau=\tau'$
+\end{proof}
+
+当我们把$s$换为$s'=-s$。此时$T_0$会反向，$N_0$不变，从而$B_0$反向。$\kappa$不变，而$\tau$则因为$B_0$和$\dfrac{d^3 P}{ds'^3}$均变号而不变。
+
+现在我们思考的问题是，$\tau$到底是个什么东西？为此，我们写出标准型:
+$$
+P(s)=P_0+(s+o(s^2))T_0+(\frac{1}{2}\kappa s^2+o(s^2))N_0+\frac{1}{6}(\kappa \tau s^3+o(s^3))B_0
+$$
+
+在表达式中$\tau$只关系到了$B_0$方向的曲线值。由于这里的曲率$\kappa$总是大于$0$的(不考虑等于$0$),则$B_0$方向的曲线方向只与$\tau$和$s$有关。如果$\tau>0$，则曲线从密切平面的下方穿至上方。若$\tau<0$，则相反。
+
+\begin{proposition}
+    密切平面是所有切平面中与曲线最"贴近“的切平面。
+\end{proposition}
+\begin{proof}
+    任何切平面都可以用$T_0$以及$N_1=\cos \theta N_0+\sin \theta B_0$张成。为了计算曲线在$N_1$上的投影，我们计算:
+    $$
+    B_1=T_0 \times N_1=\cos \theta B_0 -\sin \theta N_0
+    $$
+    定义函数$f(s,\theta)$:
+    $$
+    f(s,\theta)=\langle P(s)-P_0,B_1 \rangle=\langle P(s)-P_0,\cos \theta B_0-\sin \theta N_0 \rangle
+    $$
+\end{proof}
+\begin{definition}
+    曲线:
+    $$
+    P^*(s)=P_0+sT_0+\frac{1}{2}\kappa s^2N_0+\frac{1}{6}\kappa \tau s^3 B_0
+    $$
+    称为$P(s)$的密切曲线。
+\end{definition}
+
+对上述曲线求导，我们可以得到：
+$$
+\frac{dP^*}{ds}=T_0+\kappa s N_0+\frac{1}{2}\kappa \tau s^2 B_0 \quad \frac{d^2P^*}{ds^2}=\kappa N_0+\kappa \tau s B_0 \quad \frac{d^3 P^*}{ds^3}=\kappa \tau B_0
+$$
+
+若$s=0$，则上述三个各阶导数与$P$是类似的。但是$s\neq 0$则没有这样的性质。
+\subsection{曲线的曲率与挠率}
+这一节我们讨论曲率和挠率的几何含义。首先考虑曲率:
+
+\quad
+
+令$T(s)=\dfrac{dP(s)}{ds}$
+$$
+|T(s+\Delta s)-T(s)|/\Delta s=|2\sin \frac{1}{2}\Delta \theta|/\Delta s=\lim|\frac{\Delta \theta}{\Delta s}| 
+$$
+则曲率反映了曲线的方向向量转动的快慢，也就是曲线弯曲的程度。
+
+接下来是挠率。
+$$
+\tau(s)=\frac{1}{\kappa(s)}\langle \frac{d^3 P}{ds^3},B\rangle
+$$
+
+我们考虑恒等式:
+$$
+\langle \frac{d^2 P(s)}{ds^2},B(s)\rangle \equiv 0
+$$
+对等式求导：
+$$
+\kappa(s)\tau(s)+\langle \kappa(s)N,B'(s)\rangle=0
+$$
+因此$\tau(s)$有表示:
+$$
+\tau(s)=-\langle N,B'(s)\rangle
+$$
+我们研究一下$B'(s)$。其分解为:
+$$
+\langle B'(s),T(s) \rangle=\frac{d}{ds}\langle T,B \rangle-\langle T'(s),B(s)\rangle=0 \quad \langle B,B'(s)\rangle =0(\langle B,B \rangle=1)
+$$
+从而$B'(s)$实际上只有$N$分量。因此：
+$$
+B'(s)=-\tau(s)N(s)
+$$
+
+\begin{example}
+    设$C$是弧长参数$s$的平面曲线，且假定$\kappa(s)\neq 0$。则存在$n \in \R^3$使得:
+    $$
+    |n|=1 \quad \langle P(s)-P(s_0),n\rangle =0
+    $$
+    对第二个式子求导:
+    $$
+    \langle T(s),n \rangle =0
+    $$
+    再求导:
+    $$
+    \langle \kappa(s)N(s),n \rangle=0
+    $$
+    考虑到$B(s)=T(s)\times N(s)$，则上述两个内积为$0$意味着$B(s)=n$或者$-n$。
+
+    不管如何，此时我们有:
+    $$
+    \frac{dB(s)}{ds}=0 \quad \tau(s)=-\langle N,\frac{dB}{ds}  \rangle
+    $$
+
+    因而平面曲线的挠率总是为$0$。
+
+    设曲线的挠率总是$0$,即$\tau(s)\equiv 0$。此时$\dfrac{dB}{ds}=-\tau(s) N=0$。因此$B(s)$是一个常向量。记为$n$。
+
+    现在考虑$P(s)$与$B(s)$的内积:
+    $$
+    \langle P(s),B(s) \rangle \equiv C
+    $$
+    这是显然的。因为求导直接解决问题。从而挠率恒为$0$的曲线是平面曲线。
+\end{example}
+\begin{example}[圆柱螺线]
+    $$
+    P(s)=(r\cos \omega s,r\sin \omega s,h\omega s)
+    $$
+    其中$\omega=(r^2+h^2)^{-1/2}$。
+
+    求导得:
+    $$
+    \frac{dP(s)}{ds}=(-r\omega \sin\omega s,r\omega \cos \omega s,h\omega)
+    $$
+    可得其长度为$1$。因此$s$是弧长参数。
+    
+    \quad
+
+    于是$T(s)=\dfrac{dP(s)}{ds}$，$N(s)=(-\cos \omega s,-\sin \omega s,0)$。
+    $$
+    B(s)=T(s)\times N(s)=(\omega h \sin \omega s,-\omega h \cos\omega s,r\omega)
+    $$
+    对$B(s)$求导即可得到$\tau(s)$的值。其为$\omega^2h$.
+
+    如果$\tau(s)$是常数，曲线一定是圆柱螺旋线吗？
+\end{example}
+密切圆的概念比较显然，这里就不赘述了。
+\end{document}

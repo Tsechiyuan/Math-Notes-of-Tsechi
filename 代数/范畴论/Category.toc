@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}范畴论基础}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}函子范畴与泛性质}{2}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}函子范畴}{2}{subsubsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}泛性质}{4}{subsubsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.2}可表函子}{5}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}四个函子和米田引理}{5}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}可表函子}{8}{subsubsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.3}伴随函子}{9}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}极限与完备化}{14}{subsection.1.4}%
+\contentsline {subsubsection}{\numberline {1.4.1}极限的定义}{14}{subsubsection.1.4.1}%
+\contentsline {subsubsection}{\numberline {1.4.2}极限和函子的可表性}{16}{subsubsection.1.4.2}%
+\contentsline {subsubsection}{\numberline {1.4.3}常用的几个极限（你是一个一个特例）}{21}{subsubsection.1.4.3}%
+\contentsline {subsubsection}{\numberline {1.4.4}完备性}{22}{subsubsection.1.4.4}%
+\contentsline {subsubsection}{\numberline {1.4.5}极限与函子之间的关系}{24}{subsubsection.1.4.5}%
+\contentsline {section}{\numberline {2}基础范畴论补充}{26}{section.2}%
+\contentsline {subsection}{\numberline {2.1}子商}{26}{subsection.2.1}%
+\contentsline {section}{\numberline {3}幺半范畴}{27}{section.3}%
