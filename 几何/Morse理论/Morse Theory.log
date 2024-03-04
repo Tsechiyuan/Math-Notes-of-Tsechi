@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.2)  4 MAR 2024 19:06
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.2)  4 MAR 2024 21:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1499,20 +1499,6 @@ Package fontspec Info: Font family 'KaiTi(0)' created for font 'KaiTi' with
 LaTeX Font Warning: Font shape `TU/lmr/bx/sc' undefined
 (Font)              using `TU/lmr/bx/n' instead on input line 9.
 
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <15.05624> on input line 10.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12.045> on input line 10.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9.03374> on input line 10.
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 10.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 10.
-
 ) [2
 
 
@@ -1530,11 +1516,11 @@ Package logreq Info: Writing requests to '"Morse Theory".run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 42854 strings out of 476683
- 922067 string characters out of 5807576
- 2749468 words of memory out of 5000000
- 62240 multiletter control sequences out of 15000+600000
- 539345 words of font info for 105 fonts, out of 8000000 for 9000
+ 42830 strings out of 476683
+ 921689 string characters out of 5807576
+ 2749556 words of memory out of 5000000
+ 62222 multiletter control sequences out of 15000+600000
+ 527282 words of font info for 90 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  123i,14n,127p,1038b,3856s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
