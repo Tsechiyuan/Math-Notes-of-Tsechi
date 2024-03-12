@@ -13,7 +13,26 @@
 %%%%%%%%%%%%%%%%%%
 %  Environments  %
 %%%%%%%%%%%%%%%%%%
-
+%command
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Ext}{\mathrm{Ext}}
+\newcommand{\Tor}{\mathrm{Tor}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\RP}{\mathbb{RP}}
+%\newcommand{\pa}[3]{%
+    %\ifnum#1=1
+     %   \frac{\partial #2}{\partial #3}%
+    %\else
+     %   \frac{\partial^{#1} #2}{\partial {#3}^{#1}}%
+    %\fi
+%}
+\newcommand{\pa}[3][]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
 %%%%%%%% Problem %%%%%%%%%%%%%
 \colorlet{shadecolor}{orange!12}
 \newtheorem{prob}{Problem}
