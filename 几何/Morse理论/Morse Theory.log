@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.26)  12 MAR 2024 10:16
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.26)  14 MAR 2024 00:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -14,8 +14,8 @@ LaTeX Warning: You have requested document class `package/fancy-book',
 Document Class: fancy-book 2021/03/11 Fancy Book
 (c:/texlive/2023/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2022/07/02 v1.4n Standard LaTeX document class
-(c:/texlive/2023/texmf-dist/tex/latex/base/bk12.clo
-File: bk12.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
+(c:/texlive/2023/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count181
 \c@chapter=\count182
@@ -1388,15 +1388,15 @@ Package hyperref Info: Link coloring ON on input line 35.
 * \textheight=736.64185pt
 * \oddsidemargin=-18.06749pt
 * \evensidemargin=-18.06749pt
-* \topmargin=-49.94128pt
+* \topmargin=-48.13498pt
 * \headheight=12.0pt
-* \headsep=19.8738pt
-* \topskip=12.0pt
-* \footskip=30.0pt
-* \marginparwidth=38.0pt
+* \headsep=18.06749pt
+* \topskip=10.0pt
+* \footskip=25.29494pt
+* \marginparwidth=61.0pt
 * \marginparsep=7.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -1505,6 +1505,12 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 14.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 19.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 20.
 ) [3
 
 
@@ -1522,10 +1528,10 @@ Package logreq Info: Writing requests to '"Morse Theory".run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 42967 strings out of 476683
- 925535 string characters out of 5807575
- 2749729 words of memory out of 5000000
- 62357 multiletter control sequences out of 15000+600000
+ 42973 strings out of 476683
+ 925614 string characters out of 5807575
+ 2749736 words of memory out of 5000000
+ 62364 multiletter control sequences out of 15000+600000
  527290 words of font info for 91 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  123i,14n,127p,1042b,3883s stack positions out of 10000i,1000n,20000p,200000b,200000s

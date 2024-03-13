@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.26)  29 DEC 2023 01:28
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.3.26)  14 MAR 2024 00:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/86189/OneDrive - mail.nankai.edu.cn/数学工作/数学学习笔记/模板/模板"
-(c:/Users/86189/OneDrive - mail.nankai.edu.cn/数学工作/数学学习笔记/模板/模板.tex
+**"c:/Github Project/Math-Notes-of-Tsechi/模板/模板"
+(c:/Github Project/Math-Notes-of-Tsechi/模板/模板.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22> (./package/fancy-book.cls
 
@@ -1528,19 +1528,25 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package rerunfilecheck Info: File `模板.out' has not changed.
-(rerunfilecheck)             Checksum: 5413BA68849035C9E94E17839F8C9AA2;328.
+
+Package rerunfilecheck Warning: File `模板.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `模板.out':
+(rerunfilecheck)             Before: CE3AB86F430CEAC091062647764CD942;334
+(rerunfilecheck)             After:  5413BA68849035C9E94E17839F8C9AA2;328.
 Package logreq Info: Writing requests to '模板.run.xml'.
 \openout1 = `模板.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
  42917 strings out of 476683
- 924357 string characters out of 5807575
- 2745340 words of memory out of 5000000
+ 924303 string characters out of 5807575
+ 2745426 words of memory out of 5000000
  62320 multiletter control sequences out of 15000+600000
  527258 words of font info for 87 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 123i,14n,127p,1083b,3856s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 123i,14n,127p,1065b,3856s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on 模板.pdf (6 pages).

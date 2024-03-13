@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{fancy-book}[2021/03/11 Fancy Book]
-\LoadClass[a4paper,oneside,12pt]{book}
+\LoadClass[a4paper,oneside,10pt]{book}
 
 \RequirePackage[
 backend=biber,
