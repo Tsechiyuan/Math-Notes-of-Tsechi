@@ -25,14 +25,9 @@
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\HH}{\mathbb{H}}
 \newcommand{\RP}{\mathbb{RP}}
-%\newcommand{\pa}[3]{%
-    %\ifnum#1=1
-     %   \frac{\partial #2}{\partial #3}%
-    %\else
-     %   \frac{\partial^{#1} #2}{\partial {#3}^{#1}}%
-    %\fi
-%}
 \newcommand{\pa}[3][]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+
+
 %%%%%%%% Problem %%%%%%%%%%%%%
 \colorlet{shadecolor}{orange!12}
 \newtheorem{prob}{Problem}
@@ -44,11 +39,8 @@
 %%%%%%%%%%%%%%%% THEOREM %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcounter{theo}[section] \setcounter{theo}{0} %% counter
 \renewcommand{\thetheo}{\arabic{chapter}.\arabic{section}.\arabic{theo}}
-\newenvironment{theorem}[2][]{%
+\newenvironment{theorem}[1][]{%
 	\refstepcounter{theo}%
-	 \ifstrempty{#2}%
-	 {}%
-	 {\label{#2}}%
 	\ifstrempty{#1}%
 	{\mdfsetup{%
 			frametitle={%
@@ -68,14 +60,13 @@
 	}
 	\begin{mdframed}[]\relax%
 		}{\end{mdframed}}
+
+
 %%%%%%%%%%%%%%% LEMMA %%%%%%%%%%%%%%%
 \newcounter{lem}[section]\setcounter{lem}{0}
 \renewcommand{\thelem}{\arabic{chapter}.\arabic{section}.\arabic{lem}}
-\newenvironment{lemma}[2][]{%
+\newenvironment{lemma}[1][]{%
 	\refstepcounter{lem}%
-	 \ifstrempty{#2}%
-	 {}%
-	 {\label{#2}}%
 	\ifstrempty{#1}%
 	{\mdfsetup{%
 			frametitle={%
@@ -99,11 +90,8 @@
 %%%%%%%%%%%%% DEFINITION %%%%%%%%%%%%%%%
 \newcounter{def}[section]\setcounter{def}{0}
 \renewcommand{\thedef}{\arabic{chapter}.\arabic{section}.\arabic{def}}
-\newenvironment{definition}[2][]{%
+\newenvironment{definition}[1][]{%
 	\refstepcounter{def}%
-	 \ifstrempty{#2}%
-	 {}%
-	 {\label{#2}}%
 	\ifstrempty{#1}%
 	{\mdfsetup{%
 			frametitle={%
@@ -126,11 +114,8 @@
 %%%%%%%%%%%%%% COROLLARY %%%%%%%%%%%%%%%%%%
 \newcounter{cor}[section]\setcounter{cor}{0}
 \renewcommand{\thecor}{\arabic{chapter}.\arabic{section}.\arabic{cor}}
-\newenvironment{corollary}[2][]{%
+\newenvironment{corollary}[1][]{%
 	\refstepcounter{cor}%
-	 \ifstrempty{#2}%
-	 {}%
-	 {\label{#2}}%
 	\ifstrempty{#1}%
 	{\mdfsetup{%
 			frametitle={%
@@ -154,11 +139,8 @@
 %%%%%%%%%%%%% PROPOSITIONS %%%%%%%%%%%%%%%%%%%
 \newcounter{prop}[section]\setcounter{prop}{0}
 \renewcommand{\theprop}{\arabic{chapter}.\arabic{section}.\arabic{prop}}
-\newenvironment{proposition}[2][]{%
+\newenvironment{proposition}[1][]{%
 	\refstepcounter{prop}%
-	 \ifstrempty{#2}%
-	 {}%
-	 {\label{#2}}%
 	\ifstrempty{#1}%
 	{\mdfsetup{%
 			frametitle={%
@@ -181,11 +163,8 @@
 	%%%%%%%%%%%%% Example %%%%%%%%%%%%%%%
 \newcounter{exa}[section]\setcounter{def}{0}
 \renewcommand{\theexa}{\arabic{chapter}.\arabic{section}.\arabic{def}}
-\newenvironment{example}[2][]{%
+\newenvironment{example}[1][]{%
 	\refstepcounter{def}%
-	 \ifstrempty{#2}%
-	 {}%
-	 {\label{#2}}%
 	\ifstrempty{#1}%
 	{\mdfsetup{%
 			frametitle={%
