@@ -1,0 +1,59 @@
+\def\allfiles{}
+\documentclass{package/fancy-book}
+\setlength{\parindent}{2em}
+\usepackage[UTF8]{ctex}
+%%%%%%%%%% Default Package %%%%%%%%%%%%%
+\usepackage{package/color-env}
+\usepackage{package/quiver}
+\usepackage{background}
+\usepackage[object=vectorian]{pgfornament} %% used in title.tex
+\usepackage{calligra} %%% (optional) to make the Title text beautiful 
+\usepackage{lipsum}  %% for dummy text 
+\usepackage{amssymb,amsmath,amsfonts}  %%% for maths
+\usepackage{datetime}
+
+%%%%%% Optional Packages %%%%%%%
+\usepackage{lettrine} %% for nice looking 
+\usepackage{GoudyIn} %% first Letter of the paragraph
+\renewcommand{\LettrineFontHook}{\color{black}\GoudyInfamily{}}
+\LettrineTextFont{\itshape}
+\setcounter{DefaultLines}{3}%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{datetime2}
+\usepackage{fourier-orns}
+\newcommand{\ornamento}{\vspace{2em}\noindent \textcolor{darkgray}{\hrulefill~ \raisebox{-2.5pt}[10pt][10pt]{\leafright \decofourleft 
+\decothreeleft  \aldineright \decotwo \floweroneleft \decoone   \floweroneright 
+\decotwo \aldineleft\decothreeright \decofourright \leafleft} ~  \hrulefill \\ \vspace{2em}}}
+
+
+
+%%%% Bibliography %%%%%%%%%
+% Required packages are included in notes class
+% Can be tweaked in the notes.cls file itself
+\addbibresource{resource/references.bib}
+\includeonly{title,1,2,3}
+\begin{document}
+\include{title.tex}
+\backgroundsetup{contents={}} %% to remove background and watermark from other pages
+\tableofcontents
+
+\quad
+\newpage
+这是笔者于2023年本科四年级下学期学习Morse理论的学习笔记。
+
+我们假定大家拥有基础的微分几何知识和黎曼几何知识。
+
+设$f$是流形$M$上的光滑函数。我们定义:称一个点$p\in M$是$f$的临界点(critical point),若诱导映射$f_*:T_pM \to T_{f(p)}R$是$0$映射。
+
+在流形上我们最好用各种各样的局部坐标讨论。设$(U;x_i,1\leq i \leq n)$是$p$附近的一个局部坐标系,则临界点的定义可以写为:
+\begin{align}
+	\pa{f}{x^1}=\pa{f}{x^2}=\dots=\pa{f}{x^n}=0
+\end{align}
+
+此时$f(p)$称为$f$的临界值。
+
+在临界点处$f$的性质有着与非临界值完全不同的性质。Morse理论则是研究临界点处,$M$本身拓扑性质的改变的理论。
+\include{1}
+\include{2}
+\include{3}
+\end{document}

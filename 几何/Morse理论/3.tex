@@ -1,0 +1,171 @@
+\ifx\allfiles\undefined
+
+	% 如果有这一部分另外的package，在这里加上
+	% 没有的话不需要
+	
+	\begin{document}
+\else
+\fi
+\chapter{Morse不等式的解析证明}
+本节我们讨论Witten在上个世纪80年代关于Morse不等式给出的解析证明。%我们讲通过研究流形上的上同调理论以给出Morse不等式，同时讨论这个证明在几何与拓扑两个领域上的重大影响。（论文里面写）
+\section{Witten形变与Hodge定理}
+设$M$是紧流形.对于$0\leq  i\leq n$的任意整数$i$,令$\beta_i$表示$M$的第$i$个Betti数$\dim (\HdR{1}(M;\R))$。下面的De rham定理说明我们可以用$\beta_i$表示Morse不等式。
+\begin{theorem}[De rham定理]
+	光滑流形$M$的Derham上同调和$\R$奇异上同调存在自然的同构。
+\end{theorem}
+该定理的思路是通过微分形式$\omega$在复形$\Delta^k$上的积分,给出$\R$系数奇异上同调类,在说明这是一个同构。具体的证明，参见82.
+
+这个定理表明我们可以解析地研究流形的拓扑。其关键是研究$\Omega^k(M)$在不同复形下的性质。
+
+\subsection{Witten形变}
+给定$M$上的Morse函数$f$,对外微分算子$d$做出如下的形变:
+\begin{align}
+	d_{Tf}=e^{-Tf}d e^{Tf}
+\end{align}
+
+考虑$d^2=0$,于是:
+\begin{align*}
+	(d_{Tf})^2=e^{-Tf}d^2 e^{Tf}=0
+\end{align*}
+
+因此一般的de Rham复形可以变形为$(\Omega^*(M),d_{Tf})$.从而我们可以定义起上同调群:
+\begin{align*}
+	H_{Tf,dR}^*(M,\R)=\frac{\ker(d_{Tf})}{\mathrm{Im}(d_{Tf})}
+\end{align*}
+其$\Z$分次结构为:
+\begin{align*}
+	H_{Tf,dR}^*(M,\R)=\bigoplus_{i=0}^n H_{Tf,dR}^i(M,\R)=\bigoplus_{i=0}^n \frac{\ker(d_{Tf}|_{\Omega^i(M)})}{\mathrm{Im}(d_{Tf})|_{\Omega^{i-1}(M)}}
+\end{align*}
+
+之所以考虑这样的形变，是因为我们发现形变后得到的上同调群与原来的上同调群维数一致:
+\begin{proposition}
+	对于$0 \leq i \leq n$的任意整数$i$,有:
+	\begin{align*}
+		\mathrm{dim}(H^i_{Tf,dR}(M,\R))=\mathrm{dim}(H^i_{dR}(M,\R))
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	对于形式$\alpha$,定义映射$i:\alpha \mapsto e^{-Tf}\alpha$.若$\alpha$是闭形式,则$i(\alpha)$满足$d_{Tf}(i(\alpha))=0$.另外,若$\alpha=d \beta$,则$d_{Tf}(e^{-Tf}\beta)=e^{-Tf}\alpha$.从而$d_{Tf}(i(\beta))=i(\alpha)$.
+
+	因此$i$诱导了上同调的映射$i^*:\mathrm{dim}(H^i_{dR}(M,\R))=\mathrm{dim}(H^i_{Tf,dR}(M,\R))$.显然这是一个同构。
+
+\end{proof}
+\subsection{Hodge定理}
+设$g^{TM}$是$M$的一个黎曼度量。我们给出DeRham复形上的Hodge定理。
+\begin{theorem}[Hodge]
+	
+\end{theorem}
+对于任意的$\alpha,\beta \in \Omega^*(M)$,形式的有:
+\begin{align*}
+	\langle d_{Tf}\alpha,\beta\rangle=\langle e^{-Tf}de^{Tf}\alpha,\beta\rangle=\langle \alpha,e^{Tf}d^*e^{-Tf}\beta
+\end{align*}
+于是$d_{Tf}$的形式伴随可写为:
+\begin{align}
+	d_{Tf}^*=e^{Tf}d^*e^{-Tf}
+\end{align}
+仿照Hodge分解，定义:
+\begin{align}
+	D_{Tf}&=d_{Tf}+d^*_{Tf}\\
+	\square_{Tf}&=D_{Tf}^2=d_{Tf}d^*_{Tf}+d_{Tf}^*d_{Tf}
+\end{align}
+从而可知$\square_Tf$保持$\Omega^i(M)$的次数。因为这样的操作并没有改变Hodge定理的关键部分，所以我们可以给出形变后的Hodge定理:
+\begin{align}
+	\mathrm{dim}(\ker(\square_{Tf}|_{\Omega^i(M)}))=\mathrm{dim}(H^i_{Tf,dR}(M,\R))=\mathrm{dim}(H^i_{dR}(M,\R))
+\end{align}
+上式说明,为了考量$\beta_i$的信息,可以研究$\square_{Tf}$的行为。因为$T$值本身不改变上述结果,从而可以考虑$T$值趋近于无穷的情况。
+\section{算子在临界点的分析}
+不失一般性，假设$f$在临界点$x \in M$的开邻域$U_x$上有坐标$(y^i)$满足Morse引理,并且:
+\begin{align}
+	g^{TM}=(dy^1)^2+\dots+(dy^n)^2
+\end{align}
+\begin{proposition}
+   在上述假设下，可以计算$d_{Tf}$和$d_{Tf}^*$.
+    \begin{align}
+	d_{Tf}=d+Tdf\wedge, \quad d_{Tf}^*=d^*+Ti_{(df)^*}
+    \end{align}
+其中$(df)^*$是$df$作为微分形式在度量$g^{TM}$的对偶。
+\end{proposition}
+\begin{proof}
+	设$\omega \in \Omega^*(M)$.则:
+	\begin{align}
+		d_{Tf}(\omega)=e^{-Tf}(e^{Tf}d\omega+Te^{Tf}df\wedge \omega)=d\omega+Tdf\wedge \omega
+	\end{align}
+	由于$df\wedge$的形式伴随是$i_{(df)^*}$,于是$d_{Tf}^*$的表达式如上。
+\end{proof}
+于是可以给出:
+\begin{align}
+	D_{Tf}=D+T\hat{c}(df),\hat{c}(df)=df\wedge+i_{(df)*} \text{是}df\text{的Dirac算子}
+\end{align}
+根据Morse引理,在每个$U_x$上都有:
+\begin{align}
+	df(x)=-y^1dy^1-\dots-y^{n_f(x)}dy^{n_f(x)}+y^{n_f(x)+1}dy^{n_f(x)+1}+\dots+y^ndy^n
+\end{align}
+其中$n_f(x)$是$f$在$p$处的指数。设$e_i=\frac{\partial}{\partial y^i}$是$TU_x$的定向标准正交基础,则在$U_x$上,有：
+\begin{align}
+	\square_{Tf}&=-\sum_{i=1}^n (\frac{\partial}{\partial y^i})^2-nT+T^2\|y\|^2+T\sum_{i=1}^{n_f(x)}(1-c(e_i)\hat{c}(e_i))+T\sum_{i=n_f(x)+1}^n(1+c(e_i)\hat{c}(e_i))\\&=-\sum_{i=1}^n (\frac{\partial}{\partial y^i})^2-nT+T^2\|y\|^2+2T(\sum_{i=1}^{n_f(x)}i_{e_i}e_i^*\wedge+\sum_{i=1}^{n_f(x)+1}e_i^*\wedge i_{e_i})
+\end{align}
+
+不难发现算子:
+\begin{align*}
+	\sum_{i=1}^{n_f(x)}i_{e_i}e_i^*\wedge+\sum_{i=1}^{n_f(x)+1}e_i^*\wedge i_{e_i}
+\end{align*}
+非负,且具有由下述形式生成的一维核空间:
+\begin{align*}
+	dy^1\wedge \dots \wedge dy^{n_f(x)}
+\end{align*}
+
+因此总结如下:
+\begin{proposition}
+	对于任意$T>0$,算子$\square_{Tf}$作用在$\Gamma(\bigwedge^*(E_n^*))$上非负,其由下述形式生成:
+	\begin{align}
+		\exp(\frac{-T\|y\|^2}{2})dy^1\wedge \dots \wedge dy^{n_f(x)}
+	\end{align}
+	进而对于某个固定的常数$C>0$,该算子所有的非零特征值大于$CT$.
+\end{proposition}
+\section{Morse不等式的证明}
+\subsection{一个命题}
+我们先不加证明的指出下面命题，并借此证明Morse不等式。
+\begin{proposition}
+	对于任意$c>0$,存在$T_0>0$使得当$T\geq T_0$时,$\square_{Tf}|_{\Omega^i(M)}$的落在区间$[0,c]$的特征值的个数（计重数）为$m_i,0 \leq i \leq n$.
+\end{proposition}
+
+对于$9 \leq i \leq n$的任意整数$i$,设：
+\begin{align*}
+	F_{Tf,i}^{[0,c]}\subset \Omega^i(M)
+\end{align*}
+是$\square_{Tf}|_{\Omega^i(M)}$在$[0,c]$中的特征值对应的特征向量所生成的$m_i$维向量空间。
+
+注意到下面的事实:
+\begin{align*}
+	[d_{Tf},\square_{Tf}]=[d^*_{Tf},\square_{Tf}]=0
+\end{align*}
+因此$d_{Tf}$和$d_{Tf}^*$对于$F_{Tf,i}^{[0,c]}$而言都是封闭的。($d_{Tf}$把$F_{Tf,i}^{[0,c]}$映射到$F_{Tf,i+1}^{[0,c]}$,$d^*_{Tf}$把$F_{Tf,i}^{[0,c]}$映射到$F_{Tf,i-1}^{[0,c]}$)
+
+因此我们构造了$(\Omega^*(M),d_{Tf})$有限维的子复形:
+\begin{align}
+	(F_{Tf}^{[0,c]},d_{Tf}):0 \longrightarrow F_{Tf,0}^{[0,c]} \longrightarrow F_{Tf,1}^{[0,c]} \longrightarrow \dots F_{Tf,n}^{[0,c]} \longrightarrow 0
+\end{align}
+
+将$\Omega^*(M)$的Hodge分解限制在该有限维复形上,可以给出:
+\begin{align}
+	\beta_{Tf,i}^{[0,c]}:=\dim (\frac{\ker(d_{Tf}|_{F_{Tf,i}^{[0,c]}})}{\mathrm{Im}(d_{Tf}|_{F_{Tf,{i-1}}^{[0,c]}})})
+\end{align}
+就等于$\mathrm{dim}(\ker(\square_{Tf}|_{\Omega^i(M)}))$,从而等于$\beta_i$.由于$\beta_{Tf,i}^[0,c]$总是小于$m_i$的，因此弱Morse不等式证毕。
+
+下面我们说明强Morse不等式。具体写出$F_{Tf,i}^{[0,c]}$的分解:
+\begin{align}
+	\dim(F_{Tf,n}^{[0,c]})=\dim(\ker(d_{Tf}|_{F_{Tf,i}^{[0,c]}}))+\dim(\mathrm{Im}(d_{Tf}|_{F_{Tf,i}^{[0,c]}}))
+\end{align}
+\ifx\allfiles\undefined
+	
+	% 如果有这一部分的参考文献的话，在这里加上
+	% 没有的话不需要
+	% 因此各个部分的参考文献可以分开放置
+	% 也可以统一放在主文件末尾。
+	
+	%  bibfile.bib是放置参考文献的文件，可以用zotero导出。
+	% \bibliography{bibfile}
+	
+	\end{document}
+	\else
+	\fi

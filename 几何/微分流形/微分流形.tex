@@ -1,0 +1,230 @@
+\documentclass[UTF8]{ctexart}[a4paper,10pt]
+\usepackage[thmmarks]{ntheorem}
+\usepackage{amsmath}
+\usepackage{amsfonts,amssymb} 
+\usepackage{thmtools}
+\usepackage[hmargin=2.5cm,vmargin=2.5cm]{geometry}
+\usepackage{tikz-cd,tikz}
+\usepackage{graphicx,float}
+\usepackage{fancyhdr}
+\usepackage{fourier-orns}
+\usepackage{quiver}
+
+%声明环境
+\newtheorem{example}{例}[section]              
+\newtheorem{algorithm}{算法}[subsection]
+\newtheorem{theorem}{定理}[section]            
+\newtheorem{definition}{定义}[section]
+\newtheorem{axiom}{公理}[section]
+\newtheorem{property}{性质}[section]
+\newtheorem{proposition}{命题}[section]
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+{
+    \theoremheaderfont{\sffamily}
+    \newtheorem*{remark}{注解} 
+}
+\newtheorem{condition}{条件}
+\newtheorem{conclusion}{结论}[section]
+\newtheorem{assumption}{假设}
+{
+\theoremstyle{nonumberplain}
+\theoremheaderfont{\bfseries}
+\theorembodyfont{\normalfont}
+\theoremsymbol{\mbox{$\Box$}}
+\newtheorem{proof}{证明}
+}
+%定义命令
+\def\N{\mathbb{N}}
+\def\Z{\mathbb{Z}}
+\def\Q{\mathbb{Q}}
+\def\R{\mathbb{R}}
+\def\C{\mathbb{C}}
+\def\S{\mathbb{S}}
+\def\D{\mathbb{D}}
+\def\H{\mathbb{H}}
+%外测度
+\def\outmQ{m_*(Q)}
+
+%页眉设计
+\renewcommand 
+\headrule{
+\hrulefill
+\raisebox{-2.1pt}
+{\quad{\FourierOrns M T S N}\quad}
+\hrulefill}
+\pagestyle{fancy}
+
+%超链接红色
+\usepackage[colorlinks,linkcolor=red]{hyperref}
+
+\usepackage{enumerate}
+
+
+\title{微分流形}
+\author{撰写者：Tsechi/Tseyu}
+\begin{document}
+\maketitle
+
+微分流行是笔者本科阶段第一门看来真正具有几何意义的课程。从这个角度来说，如果不能搭建好框架，对于后续的几何课程而言是非常不利的。另外，2022年秋季的时候，笔者曾经选修了南开大学数学科学学院王文龙老师所开设的《微分流形》。
+
+由于各种原因，该课程最终以大作业的方式结课。这对于笔者来说是一种糖衣炮弹——为了应付考试所作的准备在一鲲天的时间就忘完了，很难想象这是真正学会了的人有的情况。因此，最可能的解释是笔者根本没学进去这门课。因此复习（亦或者是重新学习）这门课是迫在眉睫的事情。
+
+本笔记参考《An Introduction to Manifolds》by Loring W.Tu。这本书很适合读（适当的例子，恰到好处的recall）
+
+本笔记会每周在知乎上发布。同时，欢迎致邮件以获得最新的pdf版本。虽然我写的大概率很差劲，但是如若您读后有疑问，也欢迎私信/邮件我。邮箱是：Tsechiyuan@163.com.
+\tableofcontents
+
+\section{流形}
+这一节中，我们给出流形的基础定义以及两个流形之间的映射。我们的目的是积累大量的example。
+\subsection{流形的基本概念}
+\subsubsection{拓扑流形}
+\begin{definition}
+    一个拓扑空间$M$是局部$n$维欧氏的，若$\forall p \in M$,$p$有一个邻域$U$满足存在$\varphi: U \to O$是一个同胚，其中$O$是$\R^n$的一个开集。我们称$(U,\varphi)$是一张地图，$U$是一个坐标邻域或者坐标开集。$\varphi$是坐标映射或者坐标系统。若$\varphi(p)=0$，则我们称地图$(U,\varphi)$以$p$为中心。
+\end{definition}
+地图是我自己的翻译，听起来很生动，因为把实在的空间映射到了一个欧氏空间上。就像把地形印刷在了地图上一样。
+\begin{definition}
+    一个拓扑流形是这样一个空间：$M$是Hausdorff，第二可数且局部欧氏的拓扑空间。若其是局部$n$维欧氏的，则称其为$n$维拓扑流形。
+\end{definition}
+这里存在的问题是，一个拓扑流形可不可能有两个维度？当然，如果本身$M$是不连通的，这一点是可以实现的。但是不连通的拓扑空间实际上没有单独研究的必要。所以我们假定是连通的。（或者道路连通）。
+
+实际上这里假定连通或者道路连通都没有问题：
+\begin{proposition}
+    对于拓扑流形$M$，$M$是连通的当且仅当其是道路连通的。
+\end{proposition}
+\begin{proof}
+    假设$M$是连通的。由于$M$是局部欧氏的，所以对于每个点$p \in M$而言，存在$U$使得$\forall q \in U,p,q$道路连通。设$V$为如下的集合：
+    $$
+    V=\{ q \in M|p \sim  q \}
+    $$
+    这显然是一个开集。由于$M$连通，从而$M-V$不能是开集。然而，对于$\forall q \in M-V$,$q$都有邻域与$V$不相交，因此$M-V$是开集。矛盾！
+\end{proof}
+
+回到正题。假定$M$是连通的，我们断言$M$的维数是良定的。也就是说，$\R^n$的开集不可能与$\R^m$的开集同胚，若$m\neq n$。这一点很难有初等的点拓证明，用代数拓扑的办法是最快的——$\R^m$与$\R^n$有不同的同伦群。
+
+当然我们不会详细讨论这个细节。
+
+\begin{example}
+    作为最平凡的例子，$\R^n$显然是拓扑流形。其地图为$(\R^n,1_{\R^n})$.$\R^n$的任何开集自然也是非常平凡的拓扑流形。
+\end{example}
+
+注意，Hausdorff性质和第二可数性质都是继承性的。因此对于拓扑流形$M$，其子集$N$要成为拓扑流形，我们只需要验证其局部欧氏性。
+\begin{example}
+    曲线$y=x^{2/3}$是$\R^2$平面上的曲线。这也是拓扑流形。因为其是$\R^2$的子集，并且本身同胚于$\R$。
+\end{example}
+\begin{example}
+    $\R^2$的两根坐标轴的并集不是拓扑流形。因为交点$O$的邻域去除$O$后的连通分支总是$4$。然而任何一个维度的球，去除圆心后连通分支是$1$或者$2$。
+\end{example}
+\subsubsection{相容的地图}
+显然地图不能完全描绘我们这个世界。对于流形而言，显然可能会有多张地图以同胚于欧氏空间的开集。这些不同的地图之间必须存在某种意义的匹配关系。
+\begin{definition}
+    两张地图$(U,\varphi)$,$(V,\phi)$是$C^\infty$相容的，若两个映射满足：
+    $$
+    \varphi \circ \phi^{-1}:\phi(U \cap V)\to \varphi(U\cap V) \quad  \phi \circ \varphi^{-1}:\varphi(U \cap V)\to \phi(U\cap V)  
+    $$
+    都是$C^\infty$的。这样的映射被称为转换函数。
+\end{definition}
+显然流形也不会只有两张地图，因此我们需要考虑所谓的图册：
+\begin{definition}
+    在局部欧氏的空间上，一个$C^\infty$的图册是指集族：$\mathbb{U}=\{(U_\alpha,\varphi_\alpha)\}$，并且$\forall U,V \in \mathbb{U}$，$(U,\varphi)$和$(V,\phi)$是相容的地图，使得$M=\bigcup_{\alpha}U_\alpha$。
+\end{definition}
+
+这里的例子是很多的。我们将会看到所有微分流形都会有类似的一个图册。并且还会有最大的图册。因为后面会接触到很多例子，这里就不赘述了。
+
+值得注意的是，两个地图之间的相容性并不具备传递性。这一点很容易从我们所误以为的证明中看到：
+$$
+\varphi_3 \circ \varphi^{-1}=\varphi_3 \circ \varphi_2^{-1} \circ \varphi_2 \circ \varphi_1^{-1}
+$$
+的定义区域只有$U_3 \cap U_2 \cap U_1$。
+
+然而，如果对于一个图册而言，情况就不同了。我们说一个地图与一个图册$C^\infty$相容，若其与该图册的每个地图都相容。
+\begin{lemma}
+    设$\{(U_\alpha,\varphi_\alpha)\}$是局部欧氏空间$M$的图册。如果$(V,\phi)$和$(W,\sigma)$都与该图册相容，则他们俩也是相容的。
+\end{lemma}
+这个引理实际上非常显然。因为上述假证明的问题在于定义域。而图册覆盖了整个$M$,因而很好的解决了定义域的问题。这里就省略了。
+
+\subsubsection{光滑流形}
+我们现在把流形的光滑性加强。实际上我们已经给出了光滑流形所必须的所有条件。
+\begin{definition}
+    一个光滑的流形是指一个具有图册的微分流形。如果其所有连通分支都是$n$维的，则称该流形是$n$维的。
+\end{definition}
+在理论上还存在所谓“最大图册”的概念。我们简单记录如下：
+\begin{definition}
+    对于局部欧式空间$M$，称其的一个图册$\mathbb{U}$是最大图册，若对于任何图册$\mathbb{V}$满足$\mathbb{U}\subset \mathbb{V}$，都有$\mathbb{U}=\mathbb{V}$.一个最大图册也被称为一种微分结构。
+\end{definition}
+这类概念实际上有一些集合论的味道。即我们可以利用Zorn引理说明下面的命题：
+\begin{proposition}
+    任何在局部欧氏空间$M$上的图册$\mathbb{U}$都包含在一个唯一的最大图册中。
+\end{proposition}
+类似于这种证明的有很多。如果读者了解过如向量空间必然存在基这样的命题的证明，就不难给出上述命题的证明。因此我们省略这个命题的证明。
+
+接下来我们给出一些记号。这些记号将会在整个笔记中使用。
+\begin{enumerate}
+    \item 本笔记中，之后的“流形”全部指代光滑的微分流形。
+    \item $\R^n$中的标准直角坐标记为$(r^1,\dots,r^n)$。
+    \item 对于流形$M$，其地图$(U,\varphi:U \to \R^n)$中也有坐标：$(x^1,\dots,x^n)$。具体定义为$x^i=r^i \circ \varphi$。即$p$被映射到$\R^n$的分量坐标。从而$(x^1(p),\dots,x^n(p))$是$\R^n$中的点。函数$x_i:U \to \R$被称为$U$上的坐标或者局部坐标。
+\end{enumerate}
+
+\subsubsection{光滑流形的例子}
+光滑流形具有大量的例子。我们省略平凡的例子的说明过程，对一些比较难的例子则给出证明。
+
+\begin{example}
+     $\R^n$是微分流形。
+\end{example}
+
+下面给出两个基础的构造微分流形的命题。之后还会有更多深层的命题以得到新的微分流形。
+\begin{proposition}
+    一个流形$M$的开子集$U$也是流形。
+\end{proposition}
+\begin{proof}
+    我们只给出提示：考虑$(U_\alpha,\varphi_\alpha)$是$M$的图册。根据继承性，Hausdorff性质和第二可数显然。$(U_\alpha \cap U,\varphi_\alpha)$是$U$的图册。
+\end{proof}
+\begin{proposition}
+    若$M$和$N$都是微分流形，则乘积空间$M \times N$也是微分流形。
+\end{proposition}
+\begin{proof}
+    由点集拓扑知识，Hausdorff性质和第二可数是可乘的性质。我们依然不给出具体证明。我们只说明:
+    $$
+    \mathbb{S}=\{U_\alpha \times V_\beta|U_\alpha \in \mathbb{U},V_\beta \in \mathbb{V}\}
+    $$
+    是$M \times N$的图册。
+
+    转化函数只有在两类地图都相交的时候才有意义，因此其光滑性是比较明显的。
+\end{proof}
+\begin{example}
+    一个点是微分流形。函数$f:A \subset \R^n \to \R^m$的图像，$A$是$\R^n$的开集：
+    $$
+    \Gamma(f)=\{(x,f(x))\in A\times \R^m\}
+    $$
+    也是微分流形。其本身是$\R^{m+n}$的子集，因此Hausdorff和第二可数显然。由于：
+    $$
+    (1,f):A \to \Gamma(f) ,\quad p_1:\Gamma(f) \to A
+    $$
+    这两个函数显然是连续的，并且互逆，从而$\Gamma(f)$在拓扑上与$A$同胚。既然在拓扑上同胚，那么就可以构造相同的结构使$\Gamma(f)$成为微分流形。
+\end{example}
+\begin{example}
+    一般线性群和复一般线性群都是微分流形。
+\end{example}
+\begin{example}
+    $S^n$和$\R P^n$都是微分流形。$S^n$可以看作为一个欧氏空间的子集，因此拓扑性质立即可得。对于其地图，我们不多做说明，只说明$S^n$去掉一个点后与$\R^n$同胚，从而$S^n$只需要两张地图就可以构成一个图册。其中的转化映射略显繁杂，这里就不记述了。读者可以在任何一本微分流形的参考书上找到这样的具体描述。
+
+    对于$\R P^n$而言，拓扑性质就显得不平凡。我们把$\R P^n$写为：
+    $$
+    \R P^n = S^n/\thicksim 
+    $$
+    取其中的两个不同等价类$[x],[y]$。$\R P^n$中的开集的原像都是$S^n$中的开集。$[x],[y]$不同等价于$x,y$不相同也不对径。从而存在足够小的开集$U,V$使得$U,V$不仅不相交，而且对径也不相交。因此$U$和$V$在$\R P^n$中的像集也不相交。
+
+    第二可数的性质则比较明显。
+
+    接下来说明微分结构。定义:
+    $$
+    U_k=\{[x]\in \R P^n|x=(x^1,\dots,x^{n+1}),x^k \neq 0\}
+    $$
+    这是一个开集，并且所有的$U_k$,$1\leq k \leq n+1$覆盖了$\R P^n$。定义：
+    $$
+    \varphi_k:U_k \to \R^n:\varphi_k([x])=(x^1/x^k,\dot,x^{n+1}/x^k)
+    $$
+
+    这是恰当的定义，并且是一个双射。显然这也是一个同胚。转化映射的计算比较容易，这里就省略了，请读者自行验证。
+\end{example}
+\end{document}
